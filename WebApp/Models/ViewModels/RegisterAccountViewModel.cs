@@ -1,8 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
+using WebApp.Models.Entities;
+using WebApp.Models.Interfaces;
 
 namespace WebApp.Models.ViewModels;
 
-public class RegisterAccountViewModel
+public class RegisterAccountViewModel : IRegisterUserProfile
 {
 	[Required(ErrorMessage = "You need to provide a first name")]
 	[RegularExpression(@"^[a-öA-Ö]+(?:[ é'-][a-öA-Ö]+)*$", ErrorMessage = "You need to provide a valid first name")]
@@ -37,7 +40,7 @@ public class RegisterAccountViewModel
 
 
 	[Display(Name = "Company (optional)")]
-	public string? Company { get; set; }
+	public string? CompanyName { get; set; }
 
 
 	[Required(ErrorMessage = "You need to provide an e-mail adress")]
@@ -62,5 +65,37 @@ public class RegisterAccountViewModel
 
 
 	[Display(Name = "Upload Profile Image (optional)")]
-	public string? ImageUpload { get; set; }
+	public string? ProfileImage { get; set; }
+
+	public static implicit operator IdentityUser(RegisterAccountViewModel model)
+	{
+		return new IdentityUser
+		{
+            UserName = model.Email,
+            Email = model.Email,
+            PhoneNumber = model.PhoneNumber
+        };
+	}
+
+	public static implicit operator UserProfileEntity(RegisterAccountViewModel model)
+	{
+		return new UserProfileEntity
+		{
+			FirstName = model.FirstName,
+			LastName = model.LastName,
+			PhoneNumber = model.PhoneNumber,
+			ProfileImage = model.ProfileImage,
+			CompanyName = model.CompanyName,
+		};
+	}
+
+    public static implicit operator AdressEntity(RegisterAccountViewModel model)
+    {
+        return new AdressEntity
+        {
+            StreetName = model.StreetName!,
+            PostalCode = model.PostalCode!,
+            City = model.City!,
+        };
+    }
 }

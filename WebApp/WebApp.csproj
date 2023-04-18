@@ -11,11 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\Services\" />
-    <Folder Include="Helpers\Repositories\" />
     <Folder Include="Models\Contexts\Databases\" />
-    <Folder Include="Models\Entities\" />
     <Folder Include="Factories\" />
+    <Folder Include="Models\Identities\" />
   </ItemGroup>
 
   <ItemGroup>
