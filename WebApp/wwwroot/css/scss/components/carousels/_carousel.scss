@@ -1,0 +1,63 @@
+@import '../../core/_fonts.scss';
+@import '../../core/colors';
+@import '../../core/mixins';
+
+.carousel {
+    margin-top: 70px !important;
+    position: relative;
+    margin: 0 auto;
+    max-width: 1800px;
+    overflow: hidden;
+
+    .title {
+        text-align: center;
+        font-family: $font-poppins;
+        font-weight: $font-weight-bold;
+
+        h2 {
+            font-size: 25px;
+            margin-bottom: 50px;
+        }
+    }
+
+    .container-fluid {
+        padding: 0;
+        margin: 0 auto;
+
+        .carousel-inner {
+            display: flex;
+            flex-wrap: nowrap;
+            transition: transform 0.5s ease-out;
+            overflow: hidden;
+
+            .slide {
+                flex: 0 0 auto;
+                display: flex;
+                flex-wrap: wrap;
+                margin: auto;
+                justify-content: center;
+                transition: transform 0.5s ease-out;
+                width: 100%;
+
+                .item {
+                    flex: 0 0 auto;
+                    padding: 1%;
+                    width: calc(16.666% - 1.2%);
+                }
+            }
+        }
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+
+        button {
+            border: solid 1px black;
+            border-radius: 5px;
+            margin: 5px;
+            padding: 5px 15px;
+            font-size: 20px;
+        }
+    }
+}

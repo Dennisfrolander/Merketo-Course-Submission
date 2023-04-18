@@ -1,0 +1,19 @@
+@import '../../core/fonts';
+@import '../../core/colors';
+@import '../../core/mixins';
+
+footer {
+    padding: 25px 0px;
+    background-color: $color-dark-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+
+    p {
+        color: $color-dark-4;
+        margin-bottom: 0;
+        padding: 10px;
+    }
+
+}

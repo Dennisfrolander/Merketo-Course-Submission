@@ -1,1 +1,36 @@
-﻿
+﻿//components
+@import './scss/components/_utilities.scss';
+@import './scss/components/others/_productinfo.scss';
+@import './scss/components/others/_additionalinfo.scss';
+@import './scss/components/others/_related.scss';
+@import './scss/components/others/_productgallery.scss';
+
+
+//Grids
+@import './scss/components/grids/_gridcollection.scss';
+@import './scss/components/grids/_griddiscount.scss';
+
+//Cards
+@import './scss/components/cards/_discountcard.scss';
+@import './scss/components/cards/_productcard.scss';
+@import './scss/components/cards/_blogpostcard.scss';
+
+//Carousels
+@import './scss/components/Carousels/_carousel.scss';
+
+//forms
+@import './scss/components/forms/_loginform.scss';
+@import './scss/components/forms/_columnform.scss';
+@import './scss/components/forms/_subscribeform.scss';
+@import './scss/components/forms/_contactform.scss';
+@import './scss/components/forms/_createaccform.scss';
+
+//shared
+@import './scss/components/shared/_header.scss';
+@import './scss/components/shared/_footer.scss';
+
+
+//Others
+@import './scss/components/others/_banner.scss';
+@import './scss/components/others/_showcase.scss';
+@import './scss/components/others/_googlemap.scss';

@@ -7,9 +7,63 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-    <Folder Include="wwwroot\css\" />
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\Services\" />
+    <Folder Include="Helpers\Repositories\" />
+    <Folder Include="Models\Contexts\Databases\" />
+    <Folder Include="Models\Entities\" />
+    <Folder Include="Factories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+    <None Include="wwwroot\css\scss\components\cards\_blogpostcard.scss" />
+    <None Include="wwwroot\css\scss\components\cards\_discountcard.scss" />
+    <None Include="wwwroot\css\scss\components\cards\_productcard.scss" />
+    <None Include="wwwroot\css\scss\components\carousels\_carousel.scss" />
+    <None Include="wwwroot\css\scss\components\forms\_columnform.scss" />
+    <None Include="wwwroot\css\scss\components\forms\_contactform.scss" />
+    <None Include="wwwroot\css\scss\components\forms\_createaccform.scss" />
+    <None Include="wwwroot\css\scss\components\forms\_loginform.scss" />
+    <None Include="wwwroot\css\scss\components\forms\_subscribeform.scss" />
+    <None Include="wwwroot\css\scss\components\grids\_gridcollection.scss" />
+    <None Include="wwwroot\css\scss\components\grids\_griddiscount.scss" />
+    <None Include="wwwroot\css\scss\components\others\_additionalinfo.scss" />
+    <None Include="wwwroot\css\scss\components\others\_banner.scss" />
+    <None Include="wwwroot\css\scss\components\others\_googlemap.scss" />
+    <None Include="wwwroot\css\scss\components\others\_productgallery.scss" />
+    <None Include="wwwroot\css\scss\components\others\_productinfo.scss" />
+    <None Include="wwwroot\css\scss\components\others\_related.scss" />
+    <None Include="wwwroot\css\scss\components\others\_showcase.scss" />
+    <None Include="wwwroot\css\scss\components\shared\_footer.scss" />
+    <None Include="wwwroot\css\scss\components\shared\_header.scss" />
+    <None Include="wwwroot\css\scss\components\_utilities.scss" />
+    <None Include="wwwroot\css\scss\core\_colors.scss" />
+    <None Include="wwwroot\css\scss\core\_fonts.scss" />
+    <None Include="wwwroot\css\scss\core\_mixins.scss" />
+    <None Include="wwwroot\images\logo.svg" />
+    <None Include="wwwroot\images\placeholders\120x113.svg" />
+    <None Include="wwwroot\images\placeholders\1920x300.svg" />
+    <None Include="wwwroot\images\placeholders\200x122.svg" />
+    <None Include="wwwroot\images\placeholders\270x295.svg" />
+    <None Include="wwwroot\images\placeholders\369x310.svg" />
+    <None Include="wwwroot\images\placeholders\370x295.svg" />
+    <None Include="wwwroot\images\placeholders\469x356.svg" />
+    <None Include="wwwroot\images\placeholders\501x430.svg" />
+    <None Include="wwwroot\images\placeholders\625x647.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
+    <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="7.0.5" />
+    <PackageReference Include="microsoft.entityframeworkcore.tools" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,60 @@
+@import '../../core/_fonts.scss';
+@import '../../core/colors.scss';
+@import '../../core/mixins.scss';
+.product-card {
+    padding: 0px;
+    height: 100%;
+
+    .card-img {
+        &:hover {
+            transition: transform .3s;
+            transform: scale(1.04);
+        }
+
+        img {
+            width: 100%;
+            max-height: auto;
+        }
+    }
+
+    .card-info {
+        padding: 0 10px;
+        font-family: $font-poppins;
+        font-family: $font-weight-light;
+
+        h5 {
+            font-size: 14px;
+            padding-top: 15px;
+
+            @include lg {
+                font-size: 18px;
+            }
+        }
+
+        span {
+            font-size: 10px;
+            color: $color-dark-3;
+
+            @include lg {
+                font-size: 14px;
+            }
+        }
+
+        .normal-price {
+            text-decoration: line-through;
+            margin-right: 5px;
+        }
+
+        .shopping-cart-icon {
+            float: right;
+            cursor: pointer;
+            padding-bottom: 15px;
+            font-size: 15px;
+            color: black;
+
+            &:hover {
+                opacity: 50%;
+            }
+        }
+    }
+}
