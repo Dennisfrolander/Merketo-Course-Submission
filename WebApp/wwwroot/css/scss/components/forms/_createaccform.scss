@@ -1,0 +1,50 @@
+@import '../../core/_fonts.scss';
+@import '../../core/colors';
+@import '../../core/mixins';
+
+
+.registration-form {
+    h5 {
+        font-size: 14px;
+        font-family: $font-poppins;
+        margin: 25px 0;
+
+        @include md {
+            font-size: 20px;
+        }
+    }
+    .col-12{
+        margin: 10px 0px;
+    }
+
+    .check-boxs {
+        text-align: center;
+    }
+
+    a {
+        font-size: 10px;
+    }
+
+    ul {
+        padding-left: 0;
+        font-size: 10px;
+
+        li {
+            list-style-type: none;
+        }
+
+        @include md {
+            font-size: 16px;
+        }
+    }
+
+    span:nth-child(1) {
+
+        font-size: 8px;
+        font-family: $font-poppins;
+
+        @include md {
+            font-size: 12px;
+        }
+    }
+}

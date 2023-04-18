@@ -1,0 +1,84 @@
+@import '../../core/fonts';
+@import '../../core/colors';
+@import '../../core/mixins';
+
+
+.form-col {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 50px !important;
+
+    label {
+        font-size: 12px !important;
+        font-family: $font-poppins;
+        color: $color-dark-3;
+
+        @include md {
+            font-size: 14px;
+        }
+    }
+
+    input {
+        background-color: rgb(245, 245, 245);
+        border: 0;
+        height: 35px;
+        margin: 10px 0px;
+        width: 100%;
+
+        @include md {
+            height: 50px;
+        }
+    }
+
+    .check-boxs {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @include md {
+            flex-direction: row;
+            align-items: center;
+            justify-content: left;
+        }
+
+        label {
+            font-size: 10px;
+
+            @include md {
+                font-size: 12px;
+                margin-left: 5px;
+            }
+        }
+
+        #save-info {
+            width: auto;
+            height: auto;
+            accent-color: $color-theme-1;
+
+            &:hover {
+                opacity: 50%;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .form-button {
+        margin-top: 15px;
+
+        #submit {
+            background-color: $color-theme-1;
+            padding: 7px 14px;
+            color: white;
+            font-size: 10px;
+
+            &:hover {
+                opacity: 50%;
+            }
+
+            @include md {
+                padding: 12px 40px;
+                font-size: 16px;
+            }
+        }
+    }
+}

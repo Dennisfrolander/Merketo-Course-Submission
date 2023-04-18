@@ -1,0 +1,262 @@
+@import '../../core/_fonts.scss';
+@import '../../core/colors';
+@import '../../core/mixins';
+
+
+.product-info {
+    margin-top: 50px;
+
+    .big-img {
+        margin-bottom: 1%;
+
+        img {
+            width: 100%;
+            height: auto;
+            padding: 0 0.5%;
+        }
+    }
+
+    .small-row {
+
+        img {
+            width: 25%;
+            padding: 0 0.5%;
+            height: auto;
+        }
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+
+        @include lg {
+            margin-left: 50px;
+        }
+
+        .description {
+            order: 2;
+
+            @include lg {
+                order: 1;
+            }
+
+            h3 {
+                margin-top: 15px;
+                font-size: 16px;
+                font-family: $font-poppins;
+
+                @include lg {
+                    font-size: 20px;
+                    margin-top: 0px;
+                    margin-bottom: 15px;
+                }
+            }
+
+            p {
+                font-family: $font-roboto;
+                font-size: 12px;
+                color: $color-dark-3;
+                margin-bottom: 15px;
+                border-bottom: solid 0.5px $color-theme-2;
+
+                @include lg {
+                    font-size: 14px;
+                    list-style: 1.4rem;
+                }
+            }
+        }
+
+        .rating {
+            order: 1;
+
+            @include lg {
+                order: 2;
+                margin-bottom: 15px;
+            }
+
+            .star {
+                color: gold;
+                font-size: 12px;
+
+                @include lg {
+                    font-size: 20px;
+                }
+            }
+
+            span:nth-child(6) {
+                font-size: 12px;
+                margin-left: 10px;
+
+                @include lg {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .price {
+            font-weight: $font-weight-bold;
+            font-size: 14px;
+            padding-bottom: 10px;
+            order: 4;
+
+            @include lg {
+                order: 3;
+                font-size: 25px;
+            }
+        }
+
+        .wishlist {
+            order: 7;
+            display: inline;
+            text-align: center;
+            margin: 10px;
+
+            @include lg {
+                order: 6;
+                text-align: left;
+                margin: 20px 0;
+            }
+
+            button {
+                border: 1px solid lightgray;
+                padding: 10px 20px;
+                font-size: 12px;
+                color: $color-dark-1;
+
+                &:hover {
+                    color: white;
+                }
+
+
+                @include lg {
+                    padding: 14px 28px;
+                    font-size: 15px;
+                }
+            }
+        }
+
+        .category {
+            order: 3;
+            font-size: 12px;
+            color: $color-dark-3;
+            font-weight: $font-weight-regular;
+            margin: 10px 0px;
+
+
+
+            @include lg {
+                order: 7;
+                font-size: 16px;
+            }
+
+        }
+
+        .color {
+            order: 5;
+            font-size: 12px;
+
+            @include lg {
+                font-size: 16px;
+            }
+
+            span:nth-child(1) {
+                color: red;
+                cursor: pointer;
+                margin-right: 5px;
+
+                &:hover {
+                    opacity: 50%;
+                }
+
+            }
+
+            span:nth-child(2) {
+                color: orange;
+                cursor: pointer;
+                margin-right: 5px;
+
+                &:hover {
+                    opacity: 50%;
+                }
+
+            }
+
+            span:nth-child(3) {
+                color: rgb(92, 145, 12);
+                cursor: pointer;
+
+                &:hover {
+                    opacity: 50%;
+                }
+            }
+
+            span:nth-child(4) {
+                float: right;
+
+                @include lg {
+                    float: none;
+                    margin-left: 40px;
+                }
+            }
+        }
+
+        .add-to-cart {
+            order: 6;
+            margin: 15px 0;
+            text-align: center;
+
+            @include lg {
+                order: 4;
+                text-align: left;
+                margin: 25px 0px;
+            }
+
+            .minus {
+                &:hover {
+                    background-color: lightgray;
+                }
+            }
+
+            .plus {
+                &:hover {
+                    background-color: lightgray;
+                }
+            }
+
+            span {
+                font-size: 10px;
+                padding: 7px 10px;
+                border: solid 1px lightgray;
+                font-weight: $font-weight-semibold;
+                margin: 0;
+
+
+
+                @include lg {
+                    padding: 12px 17px;
+                    font-size: 16px;
+                }
+            }
+
+            button {
+                font-size: 10px;
+                background-color: $color-theme-1;
+                color: white;
+                padding: 7px 10px;
+                font-weight: $font-weight-semibold;
+                margin-left: 15px;
+
+                &:hover {
+                    opacity: 50%;
+                }
+
+                @include lg {
+                    padding: 12px 17px;
+                    font-size: 16px;
+                    margin-left: 40px;
+                    height: 46px;
+                }
+            }
+        }
+    }
+}

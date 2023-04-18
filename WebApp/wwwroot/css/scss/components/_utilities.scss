@@ -1,0 +1,106 @@
+@import '../core/fonts';
+@import '../core/colors';
+@import '../core/mixins';
+
+
+html,
+body {
+    font-size: !important;
+    font-family: $font-roboto;
+    font-weight: $font-weight-regular;
+    color: $color-dark-2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none !important;
+    color: $color-theme-1;
+
+    &:hover {
+        text-decoration: underline;
+        color: $color-theme-1;
+    }
+}
+
+button {
+    font-family: $font-poppins;
+    border: none;
+    background-color: transparent;
+    color: $color-dark-1;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: $color-dark-1;
+        color: $color-white;
+    }
+}
+
+.btn-toggle-icon {
+    padding: 5px;
+    font-size: 1.4rem;
+
+    &:hover {
+        background-color: $color-white;
+        color: $color-dark-1;
+    }
+}
+
+.btn-theme {
+    padding: 8px 30px;
+    background-color: $color-theme-1;
+    color: $color-white;
+}
+
+.open-menu {
+    width: 100vw !important;
+    opacity: 0.99;
+    transform: translateX(-100%);
+}
+
+textarea {
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+    border: 0;
+    resize: none !important;
+    margin: 10px 0px;
+}
+
+
+.categories {
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+
+    .breadcrumb {
+        justify-content: center;
+        width: 100%;
+
+        @include lg {
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        a {
+            color: $color-dark-3;
+        }
+
+        li {
+            a {
+                color: $color-dark-3;
+
+                &:hover {
+                    color: $color-theme-1;
+                    text-decoration: underline !important;
+                }
+            }
+        }
+
+        li + li:before {
+            padding: 8px;
+            content: "/\00a0";
+        }
+    }
+}

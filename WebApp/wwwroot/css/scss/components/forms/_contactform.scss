@@ -1,0 +1,15 @@
+.contact-form {
+    margin: 50px;
+
+    .description {
+
+        textarea {
+            width: 100%;
+            background-color: rgb(245, 245, 245);
+            border: 0;
+            resize: none;
+            height: 100px;
+            margin: 10px 0px;
+        }
+    }
+}
