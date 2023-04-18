@@ -6,7 +6,16 @@
     margin: 50px !important;
 
     a {
-        font-size: 10px;
+        font-size: 8px;
+        color: red;
+
+        @include md {
+            font-size: 10px;
+        }
+
+        &:hover {
+            opacity: 0.5;
+        }
     }
 
     ul {
@@ -31,10 +40,11 @@
         float: right;
         font-size: 8px;
         font-family: $font-poppins;
-        margin-top: 5px;
+        margin-top: 8px;
 
         @include md {
             font-size: 12px;
+            margin-top: 3px;
         }
     }
 

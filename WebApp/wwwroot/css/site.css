@@ -838,7 +838,16 @@ textarea {
   margin: 50px !important;
 }
 .login a {
-  font-size: 10px;
+  font-size: 8px;
+  color: red;
+}
+@media (min-width: 768px) {
+  .login a {
+    font-size: 10px;
+  }
+}
+.login a:hover {
+  opacity: 0.5;
 }
 .login ul {
   padding-left: 0;
@@ -860,11 +869,12 @@ textarea {
   float: right;
   font-size: 8px;
   font-family: "Poppins", sans-serif;
-  margin-top: 5px;
+  margin-top: 8px;
 }
 @media (min-width: 768px) {
   .login span:nth-child(2) {
     font-size: 12px;
+    margin-top: 3px;
   }
 }
 .login span:nth-child(1) {
