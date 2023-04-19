@@ -4,7 +4,7 @@ using WebApp.Models.Contexts;
 
 namespace WebApp.Helpers.Repositories.IdentityRepos;
 
-public class IdentityRepository<TEntity> where TEntity : class
+public abstract class IdentityRepository<TEntity> where TEntity : class
 {
     protected readonly IdentityContext _context;
 

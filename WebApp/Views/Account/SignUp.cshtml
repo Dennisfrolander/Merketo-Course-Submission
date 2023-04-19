@@ -71,11 +71,10 @@
                             <input type="checkbox"
                                    id="save-info"
                                    name="save-info"
-                                   value="" />
-                            <label for="save-info">
-                                I have read and accepts the terms and
-                                agreements
-                            </label>
+                                   value=""
+                                   asp-for="TermsAndAgreements" />
+                            <label for="save-info" asp-for="TermsAndAgreements"></label>
+                            <small><span asp-validation-for="TermsAndAgreements" class="text-danger"></span></small>
                         </div>
                         <div class="form-button">
                             <button type="Submit" id="submit">Submit</button>

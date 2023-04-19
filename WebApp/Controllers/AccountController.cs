@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Helpers.Services;
 using WebApp.Models.ViewModels;
@@ -31,14 +32,14 @@ public class AccountController : Controller
 	{
         if (ModelState.IsValid)
         {
-            if (await _authService.SignUpAsync(model))
-            {
-                return RedirectToAction("SignIn");
-            }
-            else
-            {
+            if (await _authService.UserAlreadyExistsAsync(x => x.Email == model.Email))
                 ModelState.AddModelError("", "A User with the same email already exists");
-            }
+
+            else if (await _authService.SignUpAsync(model))
+                return RedirectToAction("SignIn");
+
+            else
+                ModelState.AddModelError("", "Something went wrong");
 
         }
         return View();
@@ -53,12 +54,26 @@ public class AccountController : Controller
 	[HttpPost]
 	public async Task<IActionResult> SignIn(LoginAccountViewModel model)
 	{
+		if (ModelState.IsValid)
+		{
+			if (await _authService.SignInAsync(model))
+				return RedirectToAction("index");
+			else
+				ModelState.AddModelError("", "Incorrect email or password");
+		}
 		return View();
 	}
 
 	[Authorize]
 	public new async Task<IActionResult> SignOut()
 	{
-		return LocalRedirect("/");
-	}
+        if (await _authService.SignOutAsync(User))
+        {
+            return LocalRedirect("/");
+        }
+        else
+        {
+            return RedirectToAction("index");
+        }
+    }
 }
