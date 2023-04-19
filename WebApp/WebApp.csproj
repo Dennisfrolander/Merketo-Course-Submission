@@ -13,7 +13,6 @@
   <ItemGroup>
     <Folder Include="Models\Contexts\Databases\" />
     <Folder Include="Factories\" />
-    <Folder Include="Models\Identities\" />
   </ItemGroup>
 
   <ItemGroup>
