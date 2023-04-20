@@ -1,6 +1,6 @@
-﻿<nav class="navbar navbar-dark bg-dark fixed-top">
+﻿<nav class="navbar navbar-dark bg-dark static-top">
     <div class="container-fluid">
-        <a asp-controller="Admin" asp-action="Index" class="navbar-brand">@(User.FindFirst("DisplayName")?.Value)</a>
+        <a asp-controller="Admin" asp-action="Index" class="navbar-brand">Backoffice - Merketo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,7 +18,7 @@
                         <a class="nav-link" asp-controller="Home" asp-action="Index">Merketo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Users</a>
+                        <a class="nav-link" asp-controller="Admin" asp-action="Users">Users</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Home" asp-action="Index">Products</a>

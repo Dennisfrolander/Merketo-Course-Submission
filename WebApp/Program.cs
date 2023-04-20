@@ -13,6 +13,7 @@ builder.Services.AddScoped<AdressIdentityRepository>();
 builder.Services.AddScoped<ProfileIdentityRepository>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<SeedService>();
+builder.Services.AddScoped<UserService>();
 
 
 
@@ -28,7 +29,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 
 
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Identity")));
-
+builder.Services.AddDbContext<DataContext>(x =>
+x.UseSqlServer(builder.Configuration.GetConnectionString("Data")));
 
 
 
