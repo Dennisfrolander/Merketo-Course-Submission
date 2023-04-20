@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Helpers.Repositories.DataRepos;
 using WebApp.Helpers.Repositories.IdentityRepos;
 using WebApp.Helpers.Services;
 using WebApp.Models.Contexts;
@@ -7,13 +8,18 @@ using WebApp.Models.Identities;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Services
+// Repositories
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<AdressIdentityRepository>();
 builder.Services.AddScoped<ProfileIdentityRepository>();
+builder.Services.AddScoped<ContactUserRepository>();
+builder.Services.AddScoped<ContactInformationRepository>();
+
+// Services
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<SeedService>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ContactUsService>();
 
 
 

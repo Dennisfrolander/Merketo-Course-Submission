@@ -8,7 +8,7 @@
         <nav id="menu" class="menu-links">
             <a class="link" asp-controller="home" asp-action="index">HOME</a>
             <a class="link" asp-controller="products" asp-action="index">PRODUCTS</a>
-            <a class="link" asp-controller="contacts" asp-action="index">CONTACT</a>
+            <a class="link" asp-controller="contact" asp-action="index">CONTACT</a>
             @if (signInManager.IsSignedIn(User) && User.IsInRole("admin"))
             {
                 <a class="m-4 link" asp-action="Index" asp-controller="Admin">ADMIN</a>
