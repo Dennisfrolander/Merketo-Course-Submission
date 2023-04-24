@@ -104,3 +104,14 @@ textarea {
         }
     }
 }
+
+#password-message {
+    display: none;
+    .valid {
+        color: green;
+    }
+
+    .invalid {
+        color: red;
+    }
+}

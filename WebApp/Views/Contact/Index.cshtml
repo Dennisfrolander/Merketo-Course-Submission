@@ -32,6 +32,7 @@
                         <div class="col-12 description">
                             <label asp-for="Description"></label>
                             <textarea asp-for="Description"></textarea>
+                            <small><span id ="description-message"class="text-danger"></span></small>
                         </div>
                         <div class="check-boxs">
                             <input type="checkbox"
@@ -55,3 +56,4 @@
 </section>
 
 <partial name="/Views/Partials/Others/_GoogleMapsPartial.cshtml"/>
+<script>descriptionChecker()</script>
