@@ -14,12 +14,13 @@ builder.Services.AddScoped<AdressIdentityRepository>();
 builder.Services.AddScoped<ProfileIdentityRepository>();
 builder.Services.AddScoped<ContactUserRepository>();
 builder.Services.AddScoped<ContactInformationRepository>();
-
+builder.Services.AddScoped<ProfileAdressIdentityRepository>();
 // Services
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<SeedService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ContactUsService>();
+builder.Services.AddScoped<AdressService>();
 
 
 
@@ -44,9 +45,6 @@ x.UseSqlServer(builder.Configuration.GetConnectionString("Data")));
 
 
 var app = builder.Build();
-
-
-
 app.UseHsts();
 app.UseHttpsRedirection();
 app.UseStaticFiles();

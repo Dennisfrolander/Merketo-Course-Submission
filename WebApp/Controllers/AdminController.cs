@@ -20,22 +20,23 @@ public class AdminController : Controller
         return View();
     }
 	[Authorize(Roles = "admin")]
-	public async Task<IActionResult> Profile()
+	public IActionResult Profile()
     {
         
         return View();
     }
-	[Authorize(Roles = "admin")]
-	public async Task<IActionResult> Users()
-    {
-		List<UserWithRolesViewModel> users = (List<UserWithRolesViewModel>)await _userService.GetAllUserWithRoles();
 
-		return View(users);
+    [Authorize(Roles = "admin")]
+    public async Task<IActionResult> AllUsers()
+    {
+        List<UserWithRolesViewModel> users = (List<UserWithRolesViewModel>)await _userService.GetAllUserWithRoles();
+
+        return View(users);
     }
 
 
 
-	[Authorize(Roles = "admin")]
+    [Authorize(Roles = "admin")]
 	public IActionResult Products()
     {
         return View();
