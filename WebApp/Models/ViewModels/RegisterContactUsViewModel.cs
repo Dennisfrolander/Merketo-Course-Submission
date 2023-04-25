@@ -26,6 +26,7 @@ public class RegisterContactUsViewModel : IContactUser, IContactInformation
     [Display(Name = "Mobile (optional)")]
     public string? PhoneNumber { get; set; }
 
+    [RegularExpression(@"^[A-Za-z0-9ÅÄÖåäö \n\r\t\.,!?\-;:'""(){}\[\]]{0,500}$", ErrorMessage = "Invalid description")]
     [Required(ErrorMessage = "You need to provide a Description")]
     [Display(Name = "Description*")]
     public string Description { get; set; } = null!;
