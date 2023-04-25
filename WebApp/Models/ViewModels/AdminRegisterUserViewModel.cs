@@ -67,6 +67,8 @@ public class AdminRegisterUserViewModel : IRegisterUserProfile
     [Display(Name = "Upload Profile Image (optional)")]
     public string? ProfileImage { get; set; }
 
+    [Display(Name = "Role")]
+    [Required(ErrorMessage = "You need to provide a role")]
     public string RoleName { get; set; } = null!;
 
     public static implicit operator IdentityUser(AdminRegisterUserViewModel model)

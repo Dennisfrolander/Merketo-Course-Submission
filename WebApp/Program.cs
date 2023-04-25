@@ -21,6 +21,7 @@ builder.Services.AddScoped<SeedService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ContactUsService>();
 builder.Services.AddScoped<AdressService>();
+builder.Services.AddScoped<AdminService>();
 
 
 
