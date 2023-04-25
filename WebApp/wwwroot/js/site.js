@@ -14,16 +14,21 @@
     catch { }
 }
 
-const createAccountValidate = () => {
-    const regExFirstAndLastName = /^[a-öA-Ö]+(?:[é'-][a-öA-Ö]+)*$/;
-    const regExEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const regExPostalCode = /^(?:SE-)?\d{3}\s?\d{2}$/;
-    const regExMobile = /^07[02369]\d{7}$/;
-    const regExCity = /^[a-zA-ZåäöÅÄÖ]{3,}$/;
 
-    const test = document.querySelectorAll('[data-val="true"]');
-    for (let test1 of test) {
-        test1.addEventListener("keyup", function (e) {
+//RegEx
+const regExFirstAndLastName = /^[a-öA-Ö]+(?:[é'-][a-öA-Ö]+)*$/;
+const regExEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const regExPostalCode = /^(?:SE-)?\d{3}\s?\d{2}$/;
+const regExMobile = /^07[02369]\d{7}$/;
+const regExCity = /^[a-zA-ZåäöÅÄÖ]{3,}$/;
+const regExDescription = /^[A-Za-z0-9]{1,500}$/;
+
+
+const createAccountValidate = () => {
+
+    const inputs = document.querySelectorAll('[data-val="true"]');
+    for (let input of inputs) {
+        input.addEventListener("keyup", function (e) {
             switch (e.target.id) {
                 case 'FirstName':
                     regexValidator(e.target, regExFirstAndLastName, "First Name is invalid", "");
@@ -58,7 +63,28 @@ const createAccountValidate = () => {
 }
 
 const CreateContactValidate = () => {
-
+    const inputs = document.querySelectorAll('[data-val="true"]');
+    for (let input of inputs) {
+        input.addEventListener("keyup", function (e) {
+            switch (e.target.id) {
+                case 'FirstName':
+                    regexValidator(e.target, regExFirstAndLastName, "First Name is invalid", "");
+                    break;
+                case 'LastName':
+                    regexValidator(e.target, regExFirstAndLastName, "Last Name is invalid", "");
+                    break;
+                case 'Email':
+                    regexValidator(e.target, regExEmail, "Email is invalid", "");
+                    break;
+                case 'PhoneNumber':
+                    regexValidator(e.target, regExMobile, "Mobile number is invalid", "");
+                    break;
+                case 'Description':
+                    descriptionChecker();
+                    break;
+            }
+        })
+    }
 }
 
 const comparePassword = (target) =>
@@ -118,12 +144,7 @@ const passwordValidate = (expression) => {
     const length = document.getElementById("length");
     const everything = document.getElementById("everything");
 
-
-    /*    myInput.onfocus = function () {*/
     document.getElementById(expression).style.display = "block";
-    /*    }*/
-
-
 
     myInput.onkeyup = function () {
         const lowerCaseLetters = /[a-z]/g;
@@ -195,15 +216,14 @@ const descriptionChecker = () => {
     const descriptionInput = document.getElementById("Description");
     const descriptionMessage = document.getElementById("description-message")
     const maxCharacters = 500;
+    const writtenCharacters = maxCharacters - descriptionInput.value.length;
 
-    descriptionInput.addEventListener("keyup", function () {
         if (descriptionInput.value.length > 0 && descriptionInput.value.length <= maxCharacters) {
-            const writtenCharacters = maxCharacters - descriptionInput.value.length;
             descriptionMessage.innerHTML = `Characters left ${writtenCharacters} `;
+            descriptionMessage.classList.remove("text-danger");
         }
         else if (descriptionInput.value.length > maxCharacters) {
-            descriptionMessage.innerHTML = `Det får endast vara ${maxCharacters} tecken`;
+            descriptionMessage.innerHTML = `It must be ${maxCharacters} character or less (${descriptionInput.value.length})`;
+            descriptionMessage.classList.add("text-danger");
         }
-
-    });
 }

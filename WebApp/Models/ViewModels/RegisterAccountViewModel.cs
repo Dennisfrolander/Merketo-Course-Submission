@@ -23,18 +23,18 @@ public class RegisterAccountViewModel : IRegisterUserProfile
     [Display(Name = "Street Name*")]
     public string StreetName { get; set; } = null!;
 
-
+    [RegularExpression(@"^(?:SE-)?\d{3}\s?\d{2}$", ErrorMessage = "Postal code is invalid, (12345 / 123 45)")]
     [Required(ErrorMessage = "You need to provide a postal code")]
     [Display(Name = "Postal Code*")]
     public string PostalCode { get; set; } = null!;
 
-
+    [RegularExpression(@"^[a-zA-ZåäöÅÄÖ]{3,}$", ErrorMessage = "Postal code is invalid, (12345 / 123 45)")]
     [Required(ErrorMessage = "You need to provide a City")]
     [Display(Name = "City*")]
     public string City { get; set; } = null!;
 
 
-    [RegularExpression(@"^07[02369]\d{7}$", ErrorMessage = "Invalid mobile phone number format")]
+    [RegularExpression(@"^07[02369]\d{7}$", ErrorMessage = "City is invalid")]
     [Display(Name = "Mobile (optional)")]
     public string? PhoneNumber { get; set; }
 
