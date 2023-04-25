@@ -129,6 +129,16 @@ textarea {
   content: "/ ";
 }
 
+#password-message {
+  display: none;
+}
+#password-message .valid {
+  color: green;
+}
+#password-message .invalid {
+  color: red;
+}
+
 .product-info {
   margin-top: 50px;
 }
