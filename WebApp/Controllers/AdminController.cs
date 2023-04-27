@@ -12,15 +12,19 @@ public class AdminController : Controller
 
 	private readonly UserService _userService;
     private readonly AdminService _adminService;
+    private readonly ProductService _productService;
 	#endregion
 
 	#region Constructor
-	public AdminController(UserService userService, AdminService adminService)
-    {
-        _userService = userService;
-        _adminService = adminService;
-    }
+	public AdminController(UserService userService, AdminService adminService, ProductService productService)
+	{
+		_userService = userService;
+		_adminService = adminService;
+		_productService = productService;
+	}
 	#endregion
+
+
 	public IActionResult Index()
     {
         return View();
@@ -87,7 +91,7 @@ public class AdminController : Controller
     }
     #endregion
 
-    #region Products - 
+    #region Products - All, Create, Edit
     [HttpGet]
 	public IActionResult Products()
     {
@@ -100,6 +104,28 @@ public class AdminController : Controller
         return View();
     }
 
+    [HttpPost]
+	public async Task<IActionResult> CreateProduct(RegisterProductViewModel model)
+	{
+        if (ModelState.IsValid)
+        {
+            if (await _productService.CreateAsync(model))
+                return RedirectToAction("AllProducts");
+            else
+				ModelState.AddModelError("", "Something wrong happened, try again.");
+		}
+        else
+        {
+			ModelState.AddModelError("", "You have to put valid information in the required fields");
+		}
+		return View();
+	}
+
+	[HttpGet]
+	public IActionResult AllProducts()
+	{
+		return View();
+	}
 
 	#endregion
 }

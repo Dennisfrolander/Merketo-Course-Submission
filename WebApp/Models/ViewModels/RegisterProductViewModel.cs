@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WebApp.Models.Entities;
 using WebApp.Models.Interfaces;
 
 namespace WebApp.Models.ViewModels;
@@ -36,4 +37,20 @@ public class RegisterProductViewModel : IProduct, ITag
 	[Required(ErrorMessage = "You need to provide a category")]
 	[Display(Name = "Category*")]
 	public int CategoryId { get; set; }
+
+	public static implicit operator ProductEntity(RegisterProductViewModel model)
+	{
+		return new ProductEntity
+		{
+			Name = model.Name,
+			Description = model.Description,
+			ImageUrl = model.ImageUrl,
+			Price = model.Price,
+			Discount = model.Discount,
+			IsNew = model.IsNew,
+			IsFeatured = model.IsFeatured,
+			IsPopular = model.IsPopular,
+			CategoryId = model.CategoryId,
+		};
+	}
 }

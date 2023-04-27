@@ -15,6 +15,10 @@ builder.Services.AddScoped<ProfileIdentityRepository>();
 builder.Services.AddScoped<ContactUserRepository>();
 builder.Services.AddScoped<ContactInformationRepository>();
 builder.Services.AddScoped<ProfileAdressIdentityRepository>();
+builder.Services.AddScoped<CategoryRepository>();
+builder.Services.AddScoped<ProductRepository>();
+
+
 // Services
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<SeedService>();
@@ -22,6 +26,8 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ContactUsService>();
 builder.Services.AddScoped<AdressService>();
 builder.Services.AddScoped<AdminService>();
+builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<ProductService>();
 
 
 

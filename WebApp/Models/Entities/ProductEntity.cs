@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebApp.Models.ViewModels;
 
 namespace WebApp.Models.Entities;
 
@@ -19,4 +20,19 @@ public class ProductEntity
 	public int CategoryId { get; set; }
 	public CategoryEntity Category { get; set; } = null!;
 
+	public static implicit operator ProductCardViewModel(ProductEntity entity)
+	{
+		return new ProductCardViewModel
+		{
+			Name = entity.Name,
+			ImageUrl = entity.ImageUrl,
+			Price = entity.Price,
+			Discount = entity.Discount,
+			Category = new CategoryViewModel
+			{
+				Id = entity.Category.Id,
+				Name = entity.Category.CategoryName,
+			}
+		};
+	}
 }

@@ -1,0 +1,82 @@
+﻿@model RegisterProductViewModel
+@{
+
+}
+
+<div class="container">
+	<div class="row d-flex justify-content-center">
+		<div class="col-12 col-md-8 form-col">
+			<form method="post" novalidate>
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="row d-flex justify-content-center">
+					<h5>Please register your new product</h5>
+					<div class="col-12">
+						<label asp-for="Name"></label>
+						<input asp-for="Name" class="input-form"/>
+						<small><span asp-validation-for="Name" class="text-danger"></span></small>
+					</div>
+					<div class="col-12">
+						<label asp-for="Description"></label>
+						<textarea asp-for="Description" rows="4"></textarea>
+						<small><span asp-validation-for="Description" class="text-danger"></span></small>
+					</div>
+					<div class="col-12 col-md-6">
+						<label asp-for="Price"></label>
+						<input asp-for="Price" class="input-form" />
+						<small><span asp-validation-for="Price" class="text-danger"></span></small>
+					</div>
+					<div class="col-12 col-md-6">
+						<label asp-for="Discount"></label>
+						<input asp-for="Discount" class="input-form" />
+					</div>
+					<div class="col-12">
+						<label asp-for="ImageUrl"></label>
+						<input asp-for="ImageUrl" class="input-form" />
+						<small><span asp-validation-for="ImageUrl" class="text-danger"></span></small>
+					</div>
+					<div class="col-12 mt-3">
+						<div class="form-check ">
+							<input class="form-check-input" class="checkbox" type="checkbox" asp-for="IsNew">
+							<label class="form-check-label" asp-for="IsNew"></label>
+						</div>
+					</div>
+					<div class="col-12 my-2">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" asp-for="IsFeatured">
+							<label class="form-check-label" asp-for="IsFeatured"></label>
+						</div>
+					</div>
+					<div class="col-12 mb-3">
+						<div class="form-check">
+							<input class="form-check-input" class="checkbox" type="checkbox" asp-for="IsPopular">
+							<label class="form-check-label" asp-for="IsPopular"></label>
+						</div>
+					</div>
+
+					<div class="col-12">
+						<label asp-for="CategoryId" class="mb-2"></label>
+						<select asp-for="CategoryId" class="form-select" aria-label="Default select example">
+							@if (await categoryService.GetAllAsync() != null)
+							{
+								<option value="">Select a category</option>
+								@foreach (var category in await categoryService.GetAllAsync())
+								{
+									<option value="@category.Id">@category.Name</option>
+								}
+							}
+							else
+							{
+								<option value="">No categories in the database</option>
+							}
+							
+						</select>
+						<small><span asp-validation-for="CategoryId" class="text-danger"></span></small>
+					</div>
+					<div class="form-button mt-4">
+						<button type="Submit" id="submit">Create Product</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
