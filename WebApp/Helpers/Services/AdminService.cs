@@ -45,7 +45,7 @@ public class AdminService
 	public async Task<bool> UpdateRole(AdminChangeRoleOfUserViewModel model)
 	{
 
-		var user = await _userManager.FindByIdAsync(model.Id);
+		var user = await _userManager.FindByIdAsync(model.Id!);
 		if (user != null)
 		{
 			var roles = await _userManager.GetRolesAsync(user);
@@ -56,8 +56,5 @@ public class AdminService
 		}
 		else
 			return false;
-		
-
-
 	}
 }

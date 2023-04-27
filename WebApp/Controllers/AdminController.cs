@@ -8,16 +8,20 @@ namespace WebApp.Controllers;
 [Authorize(Roles = "admin")]
 public class AdminController : Controller
 {
-    private readonly UserService _userService;
-    private readonly AdminService _adminService;
+	#region Services
 
-    public AdminController(UserService userService, AdminService adminService)
+	private readonly UserService _userService;
+    private readonly AdminService _adminService;
+	#endregion
+
+	#region Constructor
+	public AdminController(UserService userService, AdminService adminService)
     {
         _userService = userService;
         _adminService = adminService;
     }
-
-    public IActionResult Index()
+	#endregion
+	public IActionResult Index()
     {
         return View();
     }
@@ -26,8 +30,8 @@ public class AdminController : Controller
         
         return View();
     }
-
-    public async Task<IActionResult> AllUsers()
+	#region Users - All, Create, Edit
+	public async Task<IActionResult> AllUsers()
     {
         List<UserWithRolesViewModel> users = (List<UserWithRolesViewModel>)await _userService.GetAllUserWithRoles();
 
@@ -81,11 +85,21 @@ public class AdminController : Controller
 		}
         return View();
     }
+    #endregion
 
-
-
+    #region Products - 
+    [HttpGet]
 	public IActionResult Products()
     {
         return View();
     }
+
+    [HttpGet]
+    public IActionResult CreateProduct()
+    {
+        return View();
+    }
+
+
+	#endregion
 }
