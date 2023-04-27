@@ -11,4 +11,6 @@ public class DataContext : DbContext
 
 	public DbSet<ContactUserEntity> ContactUsers { get; set; }
 	public DbSet<ContactInformationEntity> ContactInformations { get; set; }
+	public DbSet<CategoryEntity> Categories { get; set; }
+	public DbSet<ProductEntity> Products { get; set; }
 }

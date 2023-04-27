@@ -9,10 +9,12 @@ namespace WebApp.Controllers;
 public class AccountController : Controller
 {
 	private readonly AuthService _authService;
+	private readonly UserService _userService;
 
-    public AccountController(AuthService authService)
+    public AccountController(AuthService authService, UserService userService)
     {
         _authService = authService;
+        _userService = userService;
     }
 
     [Authorize]
@@ -32,7 +34,7 @@ public class AccountController : Controller
 	{
         if (ModelState.IsValid)
         {
-            if (await _authService.UserAlreadyExistsAsync(x => x.Email == model.Email))
+            if (await _userService.UserAlreadyExistsAsync(x => x.Email == model.Email))
                 ModelState.AddModelError("", "A User with the same email already exists");
 
             else if (await _authService.SignUpAsync(model))

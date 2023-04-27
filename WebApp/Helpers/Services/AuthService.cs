@@ -88,10 +88,6 @@ public class AuthService
 
     }
     
-    public async Task<bool> UserAlreadyExistsAsync(Expression<Func<IdentityUser, bool>> expression)
-    {
-        return await _userManager.Users.AnyAsync(expression);
-    }
 
     public async Task<bool> SignInAsync(LoginAccountViewModel model)
     {

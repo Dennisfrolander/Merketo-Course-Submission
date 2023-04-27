@@ -17,8 +17,7 @@ public class AdressService
     {
         var entity = await _adressIdentityRepository.GetAsync(x => x.StreetName == model.StreetName && x.PostalCode == model.PostalCode && x.City == model.City);
 
-        if (entity == null)
-            entity = await _adressIdentityRepository.CreateAsync(model);
+        entity ??= await _adressIdentityRepository.CreateAsync(model);
         
         return entity;
     }

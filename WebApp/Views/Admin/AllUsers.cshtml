@@ -4,11 +4,26 @@
 	ViewData["Title"] = "Users";
 	Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
 }
+<div class="container mt-5">
+	<div class="row d-flex justify-content-center">
+		<div class="col-8">
+			<div class="row d-flex justify-content-center">
+				@foreach (var user in Model)
+				{
+					<div class="col-8 d-flex align-items-center my-3">
+						<i class="fa-solid fa-user"></i>
+						<p class="mx-2 mb-0">@user.FirstName @user.LastName</p>
+						<p class ="mx-2 mb-0">@user.RoleName</p>
+						<a asp-route-id="@user.Id" asp-action="EditUser" asp-controller="admin">Change role</a>
+					</div>
 
-@foreach (var user in Model)
-{
-	<p>@user.FirstName @user.LastName</p>
-	<p>@user.RoleName[0]</p>
-}
+				}
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
 
 

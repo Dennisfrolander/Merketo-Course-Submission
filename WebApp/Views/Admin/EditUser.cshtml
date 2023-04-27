@@ -1,0 +1,38 @@
+﻿@model AdminChangeRoleOfUserViewModel
+
+@{
+	ViewData["Title"] = "Edit user";
+	Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
+}
+
+
+
+<section class="m-5">
+	<div class="container d-flex justify-content-center">
+		<div class="col-12 col-md-8 form-col">
+			<h4 class="mb-5">Change role of the user</h4>
+			<div>
+				<p>Name - @Model.FirstName @Model.LastName</p>
+				<p>Id - @Model.Id </p>
+				<p>Email - @Model.Email </p>
+				<p>Current role - @Model.RoleName</p>
+			</div>
+			<form method="post" novalidate>
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="row d-flex justify-content-center">
+					<div class="col-12">
+						<label asp-for="RoleName" class="mb-2"></label>
+						<select asp-for="RoleName" class="form-select" aria-label="Default select example">
+							<option value="user">User</option>
+							<option value="admin">Admin</option>
+						</select>
+						<small><span asp-validation-for="RoleName" class="text-danger"></span></small>
+					</div>
+					<div class="form-button">
+						<button type="Submit" id="submit">Update role</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>

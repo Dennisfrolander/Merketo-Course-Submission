@@ -7,12 +7,12 @@ namespace WebApp.Helpers.Services;
 
 public class ContactUsService
 {
-    private readonly DataContext _context;
+
     private readonly ContactUserRepository _userRepository;
     private readonly ContactInformationRepository _informationRepository;
-    public ContactUsService(DataContext context, ContactUserRepository userRepository, ContactInformationRepository informationRepository)
+    public ContactUsService(ContactUserRepository userRepository, ContactInformationRepository informationRepository)
     {
-        _context = context;
+
         _userRepository = userRepository;
         _informationRepository = informationRepository;
     }
