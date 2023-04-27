@@ -26,8 +26,15 @@
                             <li><a class="dropdown-item" asp-controller="Admin" asp-action="CreateUser">Create User</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Products</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" asp-controller="Admin" asp-action="AllProducts">All Products</a></li>
+                            <li><a class="dropdown-item" asp-controller="Admin" asp-action="CreateProduct">Create Product</a></li>
+
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-controller="Account" asp-action="SignOut">Logout</a>

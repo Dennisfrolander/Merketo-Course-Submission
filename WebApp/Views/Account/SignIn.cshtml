@@ -16,7 +16,7 @@
 						<span id="create-account">
 							<a asp-controller="Account" asp-action="SignUp">Don't have an Account yet?</a>
 						</span>
-						<input asp-for="Email" />
+						<input asp-for="Email" class="input-form" />
 						<small><span asp-validation-for="Email" class="text-danger"></span></small>
 					</div>
 					<div class="col-12">
@@ -24,7 +24,7 @@
 						<span id="forgot-password">
 							<a href="#">Forgot Your Password?</a>
 						</span>
-						<input asp-for="Password" />
+						<input asp-for="Password" class="input-form" />
 						<small><span asp-validation-for="Password" class="text-danger"></span></small>
 					</div>
 					<div class="check-boxs">

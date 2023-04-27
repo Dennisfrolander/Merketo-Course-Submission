@@ -1,0 +1,22 @@
+﻿
+@{
+	Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
+	var products = await productService.GetAllAsync();
+}
+
+
+@if(products != null)
+{
+	foreach(var product in products)
+	{
+		<p>@product.Name</p>
+		<p>@product.Price</p>
+		<p>@product.Discount</p>
+		<p>@product.Category.Name</p>
+		<p>@product.ImageUrl</p>
+	}
+}
+else
+{
+	<p>Inga produkter</p>
+}
