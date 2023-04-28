@@ -3,6 +3,7 @@
 @{
 	ViewData["Title"] = "Users";
 	Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
+	var currentUser = await userService.CurrentUser(User);
 }
 <div class="container mt-5">
 	<div class="row d-flex justify-content-center">
@@ -25,5 +26,19 @@
 	</div>
 </div>
 
-
+@if (signInManager.IsSignedIn(User))
+{
+	<p>@currentUser.FirstName</p>
+	<p>@currentUser.LastName</p>
+	<p>@currentUser.Email</p>
+	if (currentUser.Adresses != null)
+	{
+		@foreach (var adress in currentUser.Adresses)
+		{
+			<p>@adress.StreetName</p>
+			<p>@adress.PostalCode</p>
+			<p>@adress.City</p>
+		}
+	}
+}
 

@@ -18,7 +18,7 @@ public class CategoryService
 	{
 		try
 		{
-			List<CategoryViewModel> categories = new List<CategoryViewModel>();
+			List<CategoryViewModel> categories = new();
 			var categoryEntities = await _categoryRepository.GetAllAsync();
 			foreach (var entity in categoryEntities)
 			{

@@ -1,19 +1,20 @@
 ﻿
 @{
 	Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
-	var products = await productService.GetAllAsync();
+	
 }
 
 
-@if(products != null)
+@if (await productService.GetAllAsync() != null)
 {
-	foreach(var product in products)
+	foreach (var product in await productService.GetAllAsync())
 	{
 		<p>@product.Name</p>
 		<p>@product.Price</p>
 		<p>@product.Discount</p>
 		<p>@product.Category.Name</p>
 		<p>@product.ImageUrl</p>
+		<a asp-controller="Product" asp-action="Details" asp-route-name="@product.Name">details</a>
 	}
 }
 else

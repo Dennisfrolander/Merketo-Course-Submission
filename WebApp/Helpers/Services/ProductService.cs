@@ -41,4 +41,14 @@ public class ProductService
 		}
 		catch { return null!; }
 	}
+
+	public async Task<ProductDetailsCardViewModel> GetDetailsAsync(string name)
+	{
+		try
+		{
+			ProductDetailsCardViewModel productDetails = await _productRepository.GetAsync(x => x.Name == name);
+			return productDetails!;
+		}
+		catch { return null!; }
+	}
 }

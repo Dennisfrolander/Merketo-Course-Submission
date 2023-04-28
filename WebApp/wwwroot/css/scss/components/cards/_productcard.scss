@@ -17,6 +17,55 @@
         }
     }
 
+    .card-img-new {
+        position: relative;
+        display: inline-block;
+
+        &:hover {
+            transition: transform .3s;
+            transform: scale(1.04);
+        }
+
+        img {
+            width: 100%;
+            max-height: auto;
+        }
+
+        p {
+            position: absolute;
+            top: 4px;
+            right: 2px;
+            margin: 0;
+            padding: 0;
+            transform: rotate(45deg);
+            color: white;
+            z-index: 1;
+            font-size: 8px;
+
+            @include md {
+                top: 5px;
+                font-size: 10px;
+                right: 3px;
+            }
+        }
+
+        span:after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 30px 30px 0;
+            border-color: transparent black transparent transparent;
+            right: 0;
+            top: 0;
+            position: absolute;
+
+            @include md {
+                border-width: 0 40px 40px 0;
+            }
+        }
+    }
+
     .card-info {
         padding: 0 10px;
         font-family: $font-poppins;

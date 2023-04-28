@@ -11,6 +11,17 @@ public class ProductRepository : DataRepository<ProductEntity>
 	{
 	}
 
+	public override async Task<ProductEntity> GetAsync(Expression<Func<ProductEntity, bool>> predicate)
+	{
+		try
+		{
+			var entity = await _context.Products.Include(x => x.Category).FirstOrDefaultAsync(predicate);
+			return entity!;
+		}
+
+		catch { return null!; }
+	}
+
 	public override async Task<IEnumerable<ProductEntity>> GetAllAsync()
 	{
 		try

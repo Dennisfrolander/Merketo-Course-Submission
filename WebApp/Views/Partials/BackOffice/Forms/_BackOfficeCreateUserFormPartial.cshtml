@@ -1,0 +1,97 @@
+﻿@model AdminRegisterUserViewModel
+
+
+<section class="registration-form m-5">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-8 form-col">
+                <form method="post" novalidate>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="row d-flex justify-content-center">
+                        <h5>Register a new user with role</h5>
+                        <div class="col-12 col-md-6">
+                            <label asp-for="FirstName"></label>
+                            <input asp-for="FirstName" class="input-form" />
+                            <small><span asp-validation-for="FirstName" class="text-danger"></span></small>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label asp-for="LastName"></label>
+                            <input asp-for="LastName" class="input-form" />
+                            <small><span asp-validation-for="LastName" class="text-danger"></span></small>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="StreetName"></label>
+                            <input asp-for="StreetName" class="input-form" />
+                            <small><span asp-validation-for="StreetName" class="text-danger"></span></small>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label asp-for="PostalCode"></label>
+                            <input asp-for="PostalCode" class="input-form" />
+                            <small><span asp-validation-for="PostalCode" class="text-danger"></span></small>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label asp-for="City"></label>
+                            <input asp-for="City" class="input-form" />
+                            <small><span asp-validation-for="City" class="text-danger"></span></small>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label asp-for="PhoneNumber"></label>
+                            <input asp-for="PhoneNumber" class="input-form" />
+                            <small><span asp-validation-for="PhoneNumber" class="text-danger"></span></small>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label asp-for="CompanyName"></label>
+                            <input asp-for="CompanyName" class="input-form" />
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="input-form" />
+                            <small><span asp-validation-for="Email" class="text-danger"></span></small>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" class="input-form" />
+                            <small><span asp-validation-for="Password" class="text-danger"></span></small>
+                            <div id="password-message">
+                                <small>
+                                    <span class="invalid" id="everything">You must provide a valid password,</span>
+                                    <span class="invalid" id="length">at least 8 characters long</span>
+                                    <span class="invalid" id="letter">containing at least one lowercase</span>
+                                    <span class="invalid" id="capital">and one upper case letter</span>
+                                    <span class="invalid" id="number">, 1 number</span>
+                                    <span class="invalid" id="special">, and 1 special character.</span>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="ConfirmPassword"></label>
+                            <input asp-for="ConfirmPassword" class="input-form" />
+                            <small><span asp-validation-for="ConfirmPassword" class="text-danger"></span></small>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="ProfileImage"></label>
+                            <input asp-for="ProfileImage" class="input-form" />
+                            <small><span asp-validation-for="ProfileImage" class="text-danger"></span></small>
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="RoleName" class="mb-2"></label>
+                            <select asp-for="RoleName" class="form-select" aria-label="Default select example">
+
+                                <option value="">Select a role</option>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+
+                            </select>
+                            <small><span asp-validation-for="RoleName" class="text-danger"></span></small>
+                        </div>
+                        <div class="form-button">
+                            <button type="Submit" id="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>createAccountValidate()</script>

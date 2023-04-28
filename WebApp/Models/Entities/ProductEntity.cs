@@ -28,6 +28,29 @@ public class ProductEntity
 			ImageUrl = entity.ImageUrl,
 			Price = entity.Price,
 			Discount = entity.Discount,
+			Popular	= entity.IsPopular,
+			Featured = entity.IsFeatured,
+			New = entity.IsNew,
+			Category = new CategoryViewModel
+			{
+				Id = entity.Category.Id,
+				Name = entity.Category.CategoryName,
+			}
+		};
+	}
+
+	public static implicit operator ProductDetailsCardViewModel(ProductEntity entity)
+	{
+		return new ProductDetailsCardViewModel
+		{
+			Name = entity.Name,
+			Description = entity.Description,
+			Popular = entity.IsPopular,
+			Featured = entity.IsFeatured,
+			New = entity.IsNew,
+			ImageUrl = entity.ImageUrl,
+			Price = entity.Price,
+			Discount = entity.Discount,
 			Category = new CategoryViewModel
 			{
 				Id = entity.Category.Id,
