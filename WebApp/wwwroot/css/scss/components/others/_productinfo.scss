@@ -212,6 +212,7 @@
             }
 
             .minus {
+                margin-right: 5px;
                 &:hover {
                     background-color: lightgray;
                 }
@@ -228,13 +229,12 @@
                 padding: 7px 10px;
                 border: solid 1px lightgray;
                 font-weight: $font-weight-semibold;
-                margin: 0;
 
 
 
                 @include lg {
                     padding: 12px 17px;
-                    font-size: 16px;
+                    font-size: 12px;
                 }
             }
 

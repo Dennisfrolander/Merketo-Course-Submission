@@ -1,0 +1,84 @@
+﻿@model ProductDetailsCardViewModel
+
+
+<section class="product-info">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-10 col-md-5">
+                <div class="big-img p-0">
+                    <img src="@Model.ImageUrl"
+                         alt="@Model.Name" />
+                </div>
+                <div class="row small-row d-flex">
+                    <div class="col-12 d-flex">
+                        <img src="@Model.ImageUrl"
+                             alt="@Model.Name" />
+                        <img src="@Model.ImageUrl"
+                             alt="@Model.Name" />
+                        <img src="@Model.ImageUrl"
+                             alt="@Model.Name" />
+                        <img src="@Model.ImageUrl"
+                             alt="@Model.Name" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-10 col-md-6">
+                <div class="info">
+                    <div class="description">
+                        <h3>@Model.Name</h3>
+                        <p>
+                            @Model.Description
+                        </p>
+                    </div>
+                    <div class="rating">
+                        <span class="star">
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <span class="star">
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <span class="star">
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <span class="star">
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <span class="star">
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <span> 16 Reviews</span>
+                    </div>
+                    <div class="price">$@Model.Price</div>
+                    <div class="add-to-cart">
+                        <span class="minus">
+                            <i class="fa-solid fa-minus"></i>
+                        </span>
+                        <span class="quantity">1</span>
+                        <span class="plus">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                        <button>
+                            Add to cart
+                            <i class="fa-regular fa-cart-plus"></i>
+                        </button>
+                    </div>
+                    <div class="color">
+                        <span><i class="fa-solid fa-circle"></i></span>
+                        <span><i class="fa-solid fa-circle"></i></span>
+                        <span><i class="fa-solid fa-circle"></i></span>
+                        <span>SKU: N/A</span>
+                    </div>
+                    <div class="wishlist">
+                        <button class="wishlist">
+                            Add to wishlist
+                        </button>
+                    </div>
+                    <div class="category">
+                        Category: @Model.Category.Name
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

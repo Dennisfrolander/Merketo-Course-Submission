@@ -1,0 +1,23 @@
+﻿@model List<ProductCardViewModel>
+@{
+}
+
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <h1 class="text-center my-5">Products</h1>
+        @if (Model.Any())
+        {
+            @foreach (var product in Model)
+            {
+                <div class="col-6 col-md-3">
+                    <partial name="/Views/Partials/Cards/_ProductCardPartial.cshtml" model="product" />
+                </div>
+            }
+        }
+        else
+        {
+            <p>Det finns inga produkter för tillfället</p>
+        }
+    </div>
+</div>

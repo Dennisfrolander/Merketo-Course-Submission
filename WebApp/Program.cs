@@ -17,6 +17,7 @@ builder.Services.AddScoped<ContactInformationRepository>();
 builder.Services.AddScoped<ProfileAdressIdentityRepository>();
 builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<ProfileAdressRepository>();
 
 
 // Services
