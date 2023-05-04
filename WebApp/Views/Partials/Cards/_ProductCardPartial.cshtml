@@ -1,40 +1,46 @@
 ﻿@model ProductCardViewModel
 @{
 }
-<div class="product-card">
-    <a asp-controller="product" asp-action="details" asp-route-name="@Model.Name">
+<div class="product-card ">
+	<a asp-controller="product" asp-action="details" asp-route-name="@Model.Name">
 
-        @if(Model.New == true)
-        {
-            <div class="card-img-new">
-                <img src="@Model.ImageUrl"
-                     alt="@Model.Name" />
+		@if (Model.New == true)
+		{
+			<div class="card-img-new">
+				<img src="@Model.ImageUrl"
+					 alt="@Model.Name"
+					 class="img" />
 
-                <p>New</p>
-                <span></span>
-            </div>
-        }
-        else
-        {
-            <div class="card-img">
-                <img src="@Model.ImageUrl"
-                     alt="@Model.Name" />
-            </div>
-        }
-    </a>
-    <div class="card-info">
-        <h5>@Model.Name</h5>
-        @if (Model.Discount != null)
-        {
-            <span class="normal-price">$@Model.Price</span>
-            <span class="new-price">$@(Model.Price - (Model.Discount / 100 * Model.Price))</span>
-        }
-        else
-        {
-            <span>$@Model.Price</span>
-        }
-        <span class="shopping-cart-icon">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </span>
-    </div>
+				<p>New</p>
+				<span></span>
+			</div>
+		}
+		else
+		{
+			<div class="card-img">
+				<img src="@Model.ImageUrl"
+					 alt="@Model.Name"
+					 class="img" />
+			</div>
+		}
+	</a>
+	<div class="card-info">
+		<h5>@Model.Name</h5>
+		@if (Model.Discount != null)
+		{
+			<div class="price-container">
+				<span class="normal-price">$@Model.Price.ToString("0.##")</span>
+				<span class="new-price">$@(String.Format("{0:F0}", Model.Price - (Model.Price * Model.Discount / 100)))</span>
+			</div>
+		}
+		else
+		{
+			<div class="price-container">
+				<span>$@Model.Price.ToString("0.##")</span>
+			</div>
+		}
+		<span class="cart">
+			<i class="fa-solid fa-cart-shopping"></i>
+		</span>
+	</div>
 </div>

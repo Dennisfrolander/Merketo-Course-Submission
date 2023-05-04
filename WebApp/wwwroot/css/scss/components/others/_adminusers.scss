@@ -1,0 +1,47 @@
+﻿@import '../../core/mixins';
+
+.admin-users {
+
+    .user-container {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        padding-bottom: 7px;
+        border-bottom: 0.5px solid black;
+    }
+
+    span {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    @include md {
+        span {
+            font-size: 14px;
+        }
+    }
+
+
+    .user-roles-header {
+        font-size: 14px;
+        font-weight: 900;
+
+        @include md {
+            font-size: 18px;
+        }
+    }
+
+    .change-role {
+        color: black;
+        font-size: 10px;
+        padding-right: 15px;
+
+        @include md {
+            font-size: 14px;
+        }
+
+        &:hover {
+            color: red;
+        }
+    }
+}

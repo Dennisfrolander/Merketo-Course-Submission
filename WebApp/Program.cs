@@ -29,6 +29,10 @@ builder.Services.AddScoped<AdressService>();
 builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ShowcaseService>();
+builder.Services.AddScoped<GridCollectionService>();
+builder.Services.AddScoped<GridDiscountService>();
+builder.Services.AddScoped<CarouselService>();
 
 
 

@@ -1,0 +1,41 @@
+﻿@model GridCollectionViewModel
+
+@if (Model != null && Model.Products.Count > 0)
+{
+    <section class="collection">
+        <div class="titles">
+            <h1 class="title">@Model.Title</h1>
+            @if (Model.Categories != null)
+            {
+                <div class="categories">
+                    <ul class="breadcrumb">
+                        @foreach (var category in Model.Categories)
+                        {
+                            <li><a href="#">@category.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+        @if (Model.Products != null)
+        {
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    @foreach (var product in Model.Products)
+                    {
+                        <div class="col-6 col-md-3 mt-3 card-for-loadmore">
+                            <partial name="/Views/Partials/Cards/_ProductCardPartial.cshtml" model="product" />
+                        </div>
+
+                    }
+                </div>
+            </div>
+        }
+            <div class="btn mt-5">
+                <button>
+                    LOAD MORE <i class="fa-solid fa-rotate-right"></i>
+                </button>
+            </div>
+    </section>
+}
+

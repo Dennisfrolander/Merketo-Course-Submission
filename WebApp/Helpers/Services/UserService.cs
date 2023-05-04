@@ -21,34 +21,41 @@ public class UserService
 		_adressRepository = adressRepository;
 	}
 
-	public async Task<IEnumerable<UserWithRolesViewModel>> GetAllUserWithRoles()
+	public async Task<IEnumerable<UserWithRolesViewModel>> GetAllUserWithRolesAsync()
 	{
-		var userWithRoles = new List<UserWithRolesViewModel>();
-
-		var allUsers = await _userManager.Users.ToListAsync();
-
-		foreach (var user in allUsers)
+		try
 		{
-			List<string> role = (List<string>)await _userManager.GetRolesAsync(user);
+			var userWithRoles = new List<UserWithRolesViewModel>();
 
+			var allUsers = await _userManager.Users.ToListAsync();
 
-			var UserProfile = await _profileRepository.GetAsync(x => x.UserId == user.Id);
-
-			var userWithRole = new UserWithRolesViewModel
+			foreach (var user in allUsers)
 			{
-				Id = user.Id,
-				FirstName = UserProfile.FirstName,
-				LastName = UserProfile.LastName,
-				Email = user.Email!,
-				PhoneNumber = UserProfile.PhoneNumber,
-				ProfileImage = UserProfile.ProfileImage,
-				CompanyName = UserProfile.CompanyName,
-				RoleName = role[0]
-			};
+				List<string> role = (List<string>)await _userManager.GetRolesAsync(user);
 
-			userWithRoles.Add(userWithRole);
+
+				var UserProfile = await _profileRepository.GetAsync(x => x.UserId == user.Id);
+
+				var userWithRole = new UserWithRolesViewModel
+				{
+					Id = user.Id,
+					FirstName = UserProfile.FirstName,
+					LastName = UserProfile.LastName,
+					Email = user.Email!,
+					PhoneNumber = UserProfile.PhoneNumber,
+					ProfileImage = UserProfile.ProfileImage,
+					CompanyName = UserProfile.CompanyName,
+					RoleName = role[0]
+				};
+
+				userWithRoles.Add(userWithRole);
+			}
+			return userWithRoles.OrderBy(x => x.RoleName + x.FirstName).ToList();
 		}
-		return userWithRoles;
+		catch
+		{
+			return null!;
+		}
 	}
 
 	public async Task<UserWithRolesViewModel> GetUserWithRolesAsync(string id)
@@ -95,29 +102,16 @@ public class UserService
 
 				var adressesWithAdressIdAndUserId = await _profileAdressRepository.GetAllAsync(x => x.UserId == userprofile.UserId);
 
-				userProfileViewModel = new UserProfileViewModel
-				{
-					FirstName = userprofile.FirstName,
-					LastName = userprofile.LastName,
-					Email = identityUser.UserName!,
-					PhoneNumber = userprofile.PhoneNumber,
-					ProfileImage = userprofile.ProfileImage,
-					CompanyName = userprofile.CompanyName,
-				};
+				userProfileViewModel = userprofile;
+				userProfileViewModel.Email = identityUser.UserName!;
 
 				if (adressesWithAdressIdAndUserId != null)
 				{
-					foreach (var Ids in adressesWithAdressIdAndUserId)
+					foreach (var ids in adressesWithAdressIdAndUserId)
 					{
-						var adress = await _adressRepository.GetAsync(x => x.Id == Ids.AdressId);
+						var adress = await _adressRepository.GetAsync(x => x.Id == ids.AdressId);
 
-
-						userProfileViewModel.Adresses.Add(new AdressViewModel
-						{
-							StreetName = adress.StreetName,
-							City = adress.City,
-							PostalCode = adress.PostalCode,
-						});
+						userProfileViewModel.Adresses.Add(adress);
 					}
 				}
 

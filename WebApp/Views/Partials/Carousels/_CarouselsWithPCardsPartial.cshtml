@@ -1,0 +1,32 @@
+﻿@model CarouselWithProductCardsViewModel
+@{
+}
+
+@if (Model != null)
+{
+<section class="carousel">
+    <div class="title">
+        <h2>@Model.Title</h2>
+    </div>
+    <div class="container-fluid d.flex justify-content-center px-5">
+        <div class="carousel-inner">
+            @for (int i = 0; i < Model.ProductCards.Count(); i += 6)
+            {
+                <div class="slide">
+                    @for (int j = i; j < i + 6 && j < Model.ProductCards.Count(); j++)
+                    {
+                        <div class="col-6 col-sm-5 col-md-2 item">
+                            <partial name="/Views/Partials/Cards/_ProductCardPartial.cshtml" model="Model.ProductCards.ElementAt(j)" />
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="prevBtn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="nextBtn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+</section>
+}
+

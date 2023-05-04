@@ -5,31 +5,32 @@
     padding: 0px;
     height: 100%;
 
+
+    .img {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+
+        @include md {
+            padding: 30px;
+        }
+    }
+
     .card-img {
         &:hover {
             transition: transform .3s;
             transform: scale(1.04);
         }
-
-        img {
-            width: 100%;
-            max-height: auto;
-        }
     }
 
     .card-img-new {
         position: relative;
-        display: inline-block;
 
         &:hover {
             transition: transform .3s;
             transform: scale(1.04);
         }
 
-        img {
-            width: 100%;
-            max-height: auto;
-        }
 
         p {
             position: absolute;
@@ -70,6 +71,8 @@
         padding: 0 10px;
         font-family: $font-poppins;
         font-family: $font-weight-light;
+        position: relative;
+        height: calc(100% - 250px);
 
         h5 {
             font-size: 14px;
@@ -89,21 +92,23 @@
             }
         }
 
+        .price-container {
+            position: absolute;
+            bottom: 10px;
+        }
+
         .normal-price {
             text-decoration: line-through;
             margin-right: 5px;
         }
 
-        .shopping-cart-icon {
-            float: right;
-            cursor: pointer;
-            padding-bottom: 15px;
+        .cart {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
             font-size: 15px;
+            cursor: pointer;
             color: black;
-
-            &:hover {
-                opacity: 50%;
-            }
         }
     }
 }

@@ -32,7 +32,10 @@ public class ProductService
 
 			var productEntities = await _productRepository.GetAllAsync();
 
-			foreach ( var productEntity in productEntities )
+			
+			
+
+			foreach ( var productEntity in productEntities.OrderByDescending(x => x.Id))
 			{
 				products.Add( productEntity );
 			}
@@ -41,6 +44,7 @@ public class ProductService
 		}
 		catch { return null!; }
 	}
+
 
 	public async Task<ProductDetailsCardViewModel> GetDetailsAsync(string name)
 	{

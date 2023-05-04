@@ -1,21 +1,28 @@
-﻿
-@{
+﻿@{
 	Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
-	
+
 }
 
 
 @if (await productService.GetAllAsync() != null)
 {
-	foreach (var product in await productService.GetAllAsync())
-	{
-		<p>@product.Name</p>
-		<p>@product.Price</p>
-		<p>@product.Discount</p>
-		<p>@product.Category.Name</p>
-		<p>@product.ImageUrl</p>
-		<a asp-controller="Product" asp-action="Details" asp-route-name="@product.Name">details</a>
-	}
+	<div class="container admin-products d-flex">
+		<div class="row d-flex justify-content-center">
+			@foreach (var product in await productService.GetAllAsync())
+			{
+				<div class="col-7 p-4 align-items-center">
+					<a asp-controller="Product" asp-action="Details" asp-route-name="@product.Name">
+						<img src="@product.ImageUrl" width="25" height="25" />
+						<span class="name">@product.Name</span>
+						
+							<span class="pencil"><i class="fa-solid fa-pencil"></i></span>
+							<span class="trash"><i class="fa-solid fa-trash"></i></span>
+					</a>
+				</div>
+			}
+		</div>
+	</div>
+
 }
 else
 {

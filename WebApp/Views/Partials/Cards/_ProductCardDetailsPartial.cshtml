@@ -48,7 +48,15 @@
                         </span>
                         <span> 16 Reviews</span>
                     </div>
-                    <div class="price">$@Model.Price</div>
+                    <div class="price">$@if(Model.Discount > 0)
+                        {
+                            @(String.Format("{0:F0}", Model.Price - (Model.Price * Model.Discount / 100)))
+                        }
+                        else
+                        {
+                            @Model.Price.ToString("0.##")
+                        }
+                    </div>
                     <div class="add-to-cart">
                         <span class="minus">
                             <i class="fa-solid fa-minus"></i>

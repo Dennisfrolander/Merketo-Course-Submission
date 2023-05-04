@@ -1,0 +1,14 @@
+﻿@model DiscountCardViewModel
+@{
+}
+@if(Model != null){
+    <div class="discount-card">
+        <h1 class="title">@Model?.Title</h1>
+        <h2 class="discount-title">@Model?.DiscountTitle</h2>
+        <h3 class="ingress">@Model?.Ingress</h3>
+        <p class="description">@Model?.Description</p>
+        <div class="discover">
+            <a href="#">Discover more</a>
+        </div>
+    </div>
+}
