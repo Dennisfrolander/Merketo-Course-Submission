@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
 using WebApp.Models.Interfaces;
+using WebApp.Models.ViewModels;
 
 namespace WebApp.Models.Entities;
 
@@ -18,4 +20,15 @@ public class UserProfileEntity : IUserProfile
 
 	public ICollection<UserProfileAdressEntity> Adresses { get; set; } = new HashSet<UserProfileAdressEntity>();
 
+	public static implicit operator UserProfileViewModel(UserProfileEntity entity)
+	{
+		return new UserProfileViewModel
+		{
+			FirstName = entity.FirstName,
+			LastName = entity.LastName,
+			PhoneNumber = entity.PhoneNumber,
+			ProfileImage = entity.ProfileImage,
+			CompanyName = entity.CompanyName,
+		};
+	}
 }

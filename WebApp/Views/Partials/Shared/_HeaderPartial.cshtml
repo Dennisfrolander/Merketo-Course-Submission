@@ -11,7 +11,11 @@
             <a class="link" asp-controller="contact" asp-action="index">CONTACT</a>
             @if (signInManager.IsSignedIn(User) && User.IsInRole("admin"))
             {
-                <a class="m-4 link" asp-action="Index" asp-controller="Admin">ADMIN</a>
+                <a class="link" asp-action="Index" asp-controller="Admin">ADMIN</a>
+            }
+            @if (signInManager.IsSignedIn(User))
+            {
+                <a class="link" asp-action="Index" asp-controller="Account">@(User.FindFirst("DisplayName")?.Value)</a>
             }
         </nav>
         <nav class="menu-icons">

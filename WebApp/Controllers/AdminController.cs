@@ -29,15 +29,10 @@ public class AdminController : Controller
     {
         return View();
     }
-	public IActionResult Profile()
-    {
-        
-        return View();
-    }
 	#region Users - All, Create, Edit
 	public async Task<IActionResult> AllUsers()
     {
-        List<UserWithRolesViewModel> users = (List<UserWithRolesViewModel>)await _userService.GetAllUserWithRoles();
+        List<UserWithRolesViewModel> users = (List<UserWithRolesViewModel>)await _userService.GetAllUserWithRolesAsync();
 
         return View(users);
     }

@@ -58,4 +58,13 @@ public class ProductEntity
 			}
 		};
 	}
+
+	public static implicit operator ShowcaseViewModel(ProductEntity entity)
+	{
+		return new ShowcaseViewModel
+		{
+			Title = entity.Name,
+			ImageUrl = entity.ImageUrl,
+		};
+	}
 }

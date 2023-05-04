@@ -17,7 +17,7 @@ public class AuthService
     private readonly SignInManager<IdentityUser> _signInManager;
     private readonly SeedService _seedService;
     private readonly AdressService _adressService;
-    public AuthService(ProfileIdentityRepository userIdentityRepository, AdressIdentityRepository adressIdentityRepository, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, SeedService seedService, ProfileAdressIdentityRepository profileAdressIdentityRepository, AdressService adressService)
+    public AuthService(ProfileIdentityRepository userIdentityRepository, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, SeedService seedService, AdressService adressService)
     {
         _userIdentityRepository = userIdentityRepository;
         _userManager = userManager;
@@ -53,32 +53,6 @@ public class AuthService
                 var adressEntity = await _adressService.GetOrCreateAsync(model);
                 await _adressService.CreateAdressAsync(userProfileEntity, adressEntity);
             }
-
-
-
-            //var adressEntitySearched = await _adressIdentityRepository.GetAsync(x => x.StreetName == model.StreetName && x.PostalCode == model.PostalCode && x.City == model.City);
-            //if (adressEntitySearched != null)
-            //{
-            //    _context.ProfileAdresses.Add(new UserProfileAdressEntity
-            //    {
-            //        UserId = identityUser.Id,
-            //        AdressId = adressEntitySearched.Id,
-            //    });
-
-            //    await _context.SaveChangesAsync();
-            //}
-            //else
-            //{
-            //    AdressEntity adressEntity = model;
-            //    await _adressIdentityRepository.CreateAsync(adressEntity);
-
-            //    _context.ProfileAdresses.Add(new UserProfileAdressEntity
-            //    {
-            //        UserId = identityUser.Id,
-            //        AdressId = adressEntity.Id,
-            //    });
-            //    await _context.SaveChangesAsync();
-            //}
             return true;
         }
         catch
@@ -88,7 +62,6 @@ public class AuthService
 
     }
     
-
     public async Task<bool> SignInAsync(LoginAccountViewModel model)
     {
         try

@@ -1,0 +1,28 @@
+﻿@model GridDiscountViewModel
+
+@if (Model != null) {
+	<section class="discount">
+		<div class="container">
+			<div class="row d-flex justify-content-evenly">
+				@if(Model.ProductCardOne != null)
+				{
+					<div class="col-5 col-lg-3 g-0">
+						<partial name="/Views/Partials/Cards/_ProductCardPartial.cshtml" model="Model.ProductCardOne" />
+					</div>
+				}
+				@if(Model.ProductCardTwo != null)
+				{
+					<div class="col-5 col-lg-3 g-0">
+						<partial name="/Views/Partials/Cards/_ProductCardPartial.cshtml" model="Model.ProductCardTwo" />
+					</div>
+				}
+				@if (Model.UpToSale != null)
+				{
+					<div class="col-12 col-lg-3 g-0">
+						<partial name="/Views/Partials/Cards/_DiscountCardPartial.cshtml" model="Model.UpToSale" />
+					</div>
+				}
+			</div>
+		</div>
+	</section>
+}

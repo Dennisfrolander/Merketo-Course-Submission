@@ -1,0 +1,31 @@
+﻿@import '../../core/mixins';
+
+
+.admin-products {
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    font-size: 10px;
+
+    @include md {
+        font-size: 14px;
+    }
+
+    .name {
+    }
+    i{
+        &:hover {
+            opacity: 50%;
+        }
+    }
+    .trash {
+        float: right;
+        margin: 0px 20px;
+    }
+
+    .pencil {
+        float: right;
+    }
+}

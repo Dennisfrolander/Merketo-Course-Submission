@@ -3,42 +3,45 @@
 @{
 	ViewData["Title"] = "Users";
 	Layout = "~/Views/Shared/_BackOfficeLayout.cshtml";
-	var currentUser = await userService.CurrentUser(User);
 }
-<div class="container mt-5">
-	<div class="row d-flex justify-content-center">
-		<div class="col-8">
-			<div class="row d-flex justify-content-center">
-				@foreach (var user in Model)
-				{
-					<div class="col-8 d-flex align-items-center my-3">
-						<i class="fa-solid fa-user"></i>
-						<p class="mx-2 mb-0">@user.FirstName @user.LastName</p>
-						<p class ="mx-2 mb-0">@user.RoleName</p>
-						<a asp-route-id="@user.Id" asp-action="EditUser" asp-controller="admin">Change role</a>
-					</div>
 
-				}
+@if (Model != null)
+{
+	<div class="container mt-5 admin-users">
+		<div class="row d-flex justify-content-center">
+			<div class="col-md-8 col-12">
+				<div class="col-12 user-container my-3">
+					<div class="col-4 user-roles-header">
+						<h3>Users</h3>
+					</div>
+					<div class="col-4 user-roles-header">
+						<h3>Roles</h3>
+					</div>
+					<div class="col-4">
+						<div class="col-4 user-roles-header">
+							<h3>Edit</h3>
+						</div>
+					</div>
+				</div>
+				<div class="row d-flex justify-content-center">
+					@foreach (var user in Model)
+					{
+						<div class="col-12 user-container my-2">
+							<div class="col-4">
+								<i class="fa-solid fa-user"></i>
+								<span>@user.FirstName @user.LastName</span>
+							</div>
+							<div class="col-4">
+								<span>@user.RoleName</span>
+							</div>
+							<div class="col-4">
+								<a class="change-role" asp-route-id="@user.Id" asp-action="EditUser" asp-controller="admin">Change role</a>
+								<span class="trash "><i class="fa-solid fa-trash"></i></span>
+							</div>
+						</div>
+					}
+				</div>
 			</div>
 		</div>
-
-
 	</div>
-</div>
-
-@if (signInManager.IsSignedIn(User))
-{
-	<p>@currentUser.FirstName</p>
-	<p>@currentUser.LastName</p>
-	<p>@currentUser.Email</p>
-	if (currentUser.Adresses != null)
-	{
-		@foreach (var adress in currentUser.Adresses)
-		{
-			<p>@adress.StreetName</p>
-			<p>@adress.PostalCode</p>
-			<p>@adress.City</p>
-		}
-	}
 }
-
