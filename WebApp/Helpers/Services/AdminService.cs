@@ -10,6 +10,7 @@ public class AdminService
 	private readonly ProfileIdentityRepository _userIdentityRepository;
 	private readonly UserManager<IdentityUser> _userManager;
 	private readonly AdressService _adressService;
+
 	public AdminService(ProfileIdentityRepository userIdentityRepository, UserManager<IdentityUser> userManager, AdressService adressService)
 	{
 		_userIdentityRepository = userIdentityRepository;
@@ -56,5 +57,28 @@ public class AdminService
 		}
 		else
 			return false;
+	}
+
+	public async Task<bool> DeleteUser(string id)
+	{
+		try
+		{
+
+			var user = await _userManager.FindByIdAsync(id);
+
+			if(user != null)
+			{
+				await _userManager.DeleteAsync(user);
+				await _userIdentityRepository.DeleteAsync(x => x.UserId == user.Id);
+				return true;
+			}
+			else
+				return false;
+
+			
+			
+			
+		}
+		catch { return false; }
 	}
 }

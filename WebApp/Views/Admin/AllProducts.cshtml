@@ -8,16 +8,16 @@
 {
 	<div class="container admin-products d-flex">
 		<div class="row d-flex justify-content-center">
+			<h1 class="text-center my-4">All products</h1>
 			@foreach (var product in await productService.GetAllAsync())
 			{
-				<div class="col-7 p-4 align-items-center">
+				<div class="col-12 col-lg-7 p-4 align-items-center">
 					<a asp-controller="Product" asp-action="Details" asp-route-name="@product.Name">
 						<img src="@product.ImageUrl" width="25" height="25" />
 						<span class="name">@product.Name</span>
-						
+					</a>
 							<span class="pencil"><i class="fa-solid fa-pencil"></i></span>
 							<span class="trash"><i class="fa-solid fa-trash"></i></span>
-					</a>
 				</div>
 			}
 		</div>

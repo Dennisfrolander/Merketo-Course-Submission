@@ -36,7 +36,7 @@
         font-family: $font-poppins;
     }
 
-    span:nth-child(2) {
+    #create-account {
         float: right;
         font-size: 8px;
         font-family: $font-poppins;
@@ -48,13 +48,19 @@
         }
     }
 
-    span:nth-child(1) {
+    #forgot-password {
+        float: right;
         font-size: 8px;
         font-family: $font-poppins;
+        margin-top: 8px;
 
         @include md {
-            font-size: 10px;
+            font-size: 12px;
+            margin-top: 3px;
         }
+    }
+    span{
+        font-size: 10px;
     }
 
     .check-boxs {
