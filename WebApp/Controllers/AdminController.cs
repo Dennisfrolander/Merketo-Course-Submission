@@ -84,6 +84,17 @@ public class AdminController : Controller
 		}
         return View();
     }
+
+
+    public async Task<IActionResult> DeleteUser(string id)
+    {
+        if(await _adminService.DeleteUser(id))
+            return RedirectToAction("AllUsers");
+        else
+            return RedirectToAction("AllUsers");
+
+
+	}
     #endregion
 
     #region Products - All, Create, Edit
@@ -123,4 +134,8 @@ public class AdminController : Controller
 	}
 
 	#endregion
+
+
+
+
 }

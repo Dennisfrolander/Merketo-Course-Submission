@@ -22,73 +22,80 @@ const regExPostalCode = /^(?:SE-)?\d{3}\s?\d{2}$/;
 const regExMobile = /^07[02369]\d{7}$/;
 const regExCity = /^[a-zA-ZåäöÅÄÖ]{3,}$/;
 const regExDescription = /^[A-Za-z0-9]{1,500}$/;
+const regExOnlyNumbers = /^\d+$/;
 
 
 const createAccountValidate = () => {
 
-    const inputs = document.querySelectorAll('[data-val="true"]');
-    for (let input of inputs) {
-        input.addEventListener("keyup", function (e) {
-            switch (e.target.id) {
-                case 'FirstName':
-                    regexValidator(e.target, regExFirstAndLastName, "First Name is invalid", "");
-                    break;
-                case 'LastName':
-                    regexValidator(e.target, regExFirstAndLastName, "Last Name is invalid", "");
-                    break;
-                case 'StreetName':
-                    textValidator(e.target, 5, "Street name is invalid", "");
-                    break;
-                case 'PostalCode':
-                    regexValidator(e.target, regExPostalCode, "Postal code is invalid, (12345 / 123 45)", "");
-                    break;
-                case 'City':
-                    regexValidator(e.target, regExCity, "City is invalid", "");
-                    break;
-                case 'PhoneNumber':
-                    regexValidator(e.target, regExMobile, "Mobile number is invalid", "");
-                    break;
-                case 'Email':
-                    regexValidator(e.target, regExEmail, "Email is invalid", "");
-                    break;
-                case 'Password':
-                    passwordValidate("password-message");
-                    break;
-                case 'ConfirmPassword':
-                    comparePassword(e.target)
-                    break;
-            }
-        })
+    try {
+        const inputs = document.querySelectorAll('[data-val="true"]');
+        for (let input of inputs) {
+            input.addEventListener("keyup", function (e) {
+                switch (e.target.id) {
+                    case 'FirstName':
+                        regexValidator(e.target, regExFirstAndLastName, "First Name is invalid", "");
+                        break;
+                    case 'LastName':
+                        regexValidator(e.target, regExFirstAndLastName, "Last Name is invalid", "");
+                        break;
+                    case 'StreetName':
+                        textValidator(e.target, 5, "Street name is invalid", "");
+                        break;
+                    case 'PostalCode':
+                        regexValidator(e.target, regExPostalCode, "Postal code is invalid, (12345 / 123 45)", "");
+                        break;
+                    case 'City':
+                        regexValidator(e.target, regExCity, "City is invalid", "");
+                        break;
+                    case 'PhoneNumber':
+                        regexValidator(e.target, regExMobile, "Mobile number is invalid", "");
+                        break;
+                    case 'Email':
+                        regexValidator(e.target, regExEmail, "Email is invalid", "");
+                        break;
+                    case 'Password':
+                        passwordValidate("password-message");
+                        break;
+                    case 'ConfirmPassword':
+                        comparePassword(e.target)
+                        break;
+                }
+            })
+        }
+
     }
+    catch { }
 }
 
 const CreateContactValidate = () => {
-    const inputs = document.querySelectorAll('[data-val="true"]');
-    for (let input of inputs) {
-        input.addEventListener("keyup", function (e) {
-            switch (e.target.id) {
-                case 'FirstName':
-                    regexValidator(e.target, regExFirstAndLastName, "First Name is invalid", "");
-                    break;
-                case 'LastName':
-                    regexValidator(e.target, regExFirstAndLastName, "Last Name is invalid", "");
-                    break;
-                case 'Email':
-                    regexValidator(e.target, regExEmail, "Email is invalid", "");
-                    break;
-                case 'PhoneNumber':
-                    regexValidator(e.target, regExMobile, "Mobile number is invalid", "");
-                    break;
-                case 'Description':
-                    descriptionChecker();
-                    break;
-            }
-        })
+    try {
+        const inputs = document.querySelectorAll('[data-val="true"]');
+        for (let input of inputs) {
+            input.addEventListener("keyup", function (e) {
+                switch (e.target.id) {
+                    case 'FirstName':
+                        regexValidator(e.target, regExFirstAndLastName, "First Name is invalid", "");
+                        break;
+                    case 'LastName':
+                        regexValidator(e.target, regExFirstAndLastName, "Last Name is invalid", "");
+                        break;
+                    case 'Email':
+                        regexValidator(e.target, regExEmail, "Email is invalid", "");
+                        break;
+                    case 'PhoneNumber':
+                        regexValidator(e.target, regExMobile, "Mobile number is invalid", "");
+                        break;
+                    case 'Description':
+                        descriptionChecker(500);
+                        break;
+                }
+            })
+        }
     }
+    catch { }
 }
 
-const comparePassword = (target) =>
-{
+const comparePassword = (target) => {
     const password = document.getElementById("Password");
     const comparePassword = document.getElementById(target.id);
 
@@ -97,6 +104,45 @@ const comparePassword = (target) =>
     }
     else
         document.querySelector('[data-valmsg-for="ConfirmPassword"]').innerHTML = "";
+}
+
+const createProductValidate = () => {
+    try {
+        const inputs = document.querySelectorAll('[data-val="true"]');
+        for (let input of inputs) {
+            input.addEventListener("keyup", function (e) {
+                switch (e.target.id) {
+
+                    case 'Description':
+                        descriptionChecker(700);
+                        break;
+                    case 'Price':
+                        regexValidator(e.target, regExOnlyNumbers, "Price can only contain numbers", "");
+                        break;
+                }
+            })
+        }
+    }
+    catch { }
+}
+
+const loginValidate = () => {
+    try {
+        const inputs = document.querySelectorAll('[data-val="true"]');
+        for (let input of inputs) {
+            input.addEventListener("keyup", function (e) {
+                switch (e.target.id) {
+                    case 'Email':
+                        regexValidator(e.target, regExEmail, "Email is invalid", "");
+                        break;
+                    case 'Password':
+                        passwordValidate("password-message");
+                        break;
+                }
+            })
+        }
+    }
+    catch { }
 }
 
 
@@ -211,21 +257,21 @@ const passwordValidate = (expression) => {
     }
 }
 
-const descriptionChecker = () => {
+const descriptionChecker = (maxCharacters) => {
 
     const descriptionInput = document.getElementById("Description");
     const descriptionMessage = document.getElementById("description-message")
-    const maxCharacters = 500;
-    const writtenCharacters = maxCharacters - descriptionInput.value.length;
+    const _maxCharacters = maxCharacters;
+    const writtenCharacters = _maxCharacters - descriptionInput.value.length;
 
-        if (descriptionInput.value.length > 0 && descriptionInput.value.length <= maxCharacters) {
-            descriptionMessage.innerHTML = `Characters left ${writtenCharacters} `;
-            descriptionMessage.classList.remove("text-danger");
-        }
-        else if (descriptionInput.value.length > maxCharacters) {
-            descriptionMessage.innerHTML = `It must be ${maxCharacters} character or less (${descriptionInput.value.length})`;
-            descriptionMessage.classList.add("text-danger");
-        }
+    if (descriptionInput.value.length > 0 && descriptionInput.value.length <= _maxCharacters) {
+        descriptionMessage.innerHTML = `Characters left ${writtenCharacters} `;
+        descriptionMessage.classList.remove("text-danger");
+    }
+    else if (descriptionInput.value.length > _maxCharacters) {
+        descriptionMessage.innerHTML = `It must be ${_maxCharacters} character or less (${descriptionInput.value.length})`;
+        descriptionMessage.classList.add("text-danger");
+    }
 }
 
 

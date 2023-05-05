@@ -20,6 +20,13 @@
         }
     }
 
+    .img {
+       height: 100px;
+       @include md {
+           height: 250px;
+       }
+    }
+
     .product-card {
         h5 {
             font-size: 6px;

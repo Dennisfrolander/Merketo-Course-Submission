@@ -7,19 +7,26 @@
         color: black;
     }
 
-    font-size: 10px;
+    font-size: 8px;
 
     @include md {
         font-size: 14px;
     }
 
     .name {
+
+        &:hover {
+            cursor: pointer;
+            opacity: 50%;
+        }
     }
-    i{
+
+    i {
         &:hover {
             opacity: 50%;
         }
     }
+
     .trash {
         float: right;
         margin: 0px 20px;

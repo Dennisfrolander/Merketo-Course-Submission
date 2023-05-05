@@ -873,6 +873,14 @@ textarea {
   font-size: 25px;
   margin-bottom: 50px;
 }
+.carousel .img {
+  height: 100px;
+}
+@media (min-width: 768px) {
+  .carousel .img {
+    height: 250px;
+  }
+}
 .carousel .product-card h5 {
   font-size: 6px;
 }
@@ -954,26 +962,32 @@ textarea {
   font-size: 14px;
   font-family: "Poppins", sans-serif;
 }
-.login span:nth-child(2) {
+.login #create-account {
   float: right;
   font-size: 8px;
   font-family: "Poppins", sans-serif;
   margin-top: 8px;
 }
 @media (min-width: 768px) {
-  .login span:nth-child(2) {
+  .login #create-account {
     font-size: 12px;
     margin-top: 3px;
   }
 }
-.login span:nth-child(1) {
+.login #forgot-password {
+  float: right;
   font-size: 8px;
   font-family: "Poppins", sans-serif;
+  margin-top: 8px;
 }
 @media (min-width: 768px) {
-  .login span:nth-child(1) {
-    font-size: 10px;
+  .login #forgot-password {
+    font-size: 12px;
+    margin-top: 3px;
   }
+}
+.login span {
+  font-size: 10px;
 }
 .login .check-boxs {
   display: flex;
@@ -1451,7 +1465,7 @@ footer p {
 }
 
 .admin-products {
-  font-size: 10px;
+  font-size: 8px;
 }
 .admin-products a {
   text-decoration: none;
@@ -1461,6 +1475,10 @@ footer p {
   .admin-products {
     font-size: 14px;
   }
+}
+.admin-products .name:hover {
+  cursor: pointer;
+  opacity: 50%;
 }
 .admin-products i:hover {
   opacity: 50%;
@@ -1488,6 +1506,10 @@ footer p {
   .admin-users span {
     font-size: 14px;
   }
+}
+.admin-users i:hover {
+  opacity: 50%;
+  cursor: pointer;
 }
 .admin-users .user-roles-header {
   font-size: 14px;

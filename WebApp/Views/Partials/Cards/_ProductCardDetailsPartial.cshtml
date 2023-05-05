@@ -89,4 +89,44 @@
         </div>
     </div>
 </section>
+<section class="additional-info">
+    <div class="navigation-btns">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <button class="active">DESCRIPTION</button>
+                <button>ADDITIONAL INFO</button>
+                <button>REVIEWS (0)</button>
+                <button>SHIPPING & DELIVERY</button>
+            </div>
+        </div>
+    </div>
+    <div class="description">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 col-lg-11">
+                    <h3>
+                        Duis autem vel eum iriure dolor in hendrerit in
+                        vulputate velit esse molestie.
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="info col-12 col-lg-6">
+                    <p>
+                        @Model.Description
+                    </p>
+                  
+                </div>
+                <div class="image col-lg-5">
+                    <img src="@Model.ImageUrl"
+                         alt="" />
 
+                    <p>New</p>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
