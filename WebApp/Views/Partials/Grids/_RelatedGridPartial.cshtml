@@ -1,0 +1,33 @@
+﻿@model RelatedGridViewModel
+
+@if (Model != null)
+{
+
+
+	<section class="collection">
+		<div class="titles">
+			@if (Model.Title != null)
+			{
+				<h1 class="title">@Model.Title</h1>
+			}
+		</div>
+		@if (Model.Cards.Any())
+		{
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					@foreach (var product in Model.Cards)
+					{
+						<div class="col-6 col-md-3 mt-3">
+							<partial name="/Views/Partials/Cards/_ProductCardPartial.cshtml" model="product" />
+						</div>
+
+					}
+				</div>
+			</div>
+		}
+		else
+		{
+			<p class="text-center">No related products at the moment</p>
+		}
+	</section>
+}

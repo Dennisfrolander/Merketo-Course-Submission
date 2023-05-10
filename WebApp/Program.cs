@@ -33,6 +33,10 @@ builder.Services.AddScoped<ShowcaseService>();
 builder.Services.AddScoped<GridCollectionService>();
 builder.Services.AddScoped<GridDiscountService>();
 builder.Services.AddScoped<CarouselService>();
+builder.Services.AddScoped<DetailsPageService>();
+builder.Services.AddScoped<RelatedGridService>();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<CookieService>();
 
 
 

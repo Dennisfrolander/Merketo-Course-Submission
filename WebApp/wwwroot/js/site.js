@@ -114,7 +114,7 @@ const createProductValidate = () => {
                 switch (e.target.id) {
 
                     case 'Description':
-                        descriptionChecker(700);
+                        descriptionChecker(500);
                         break;
                     case 'Price':
                         regexValidator(e.target, regExOnlyNumbers, "Price can only contain numbers", "");

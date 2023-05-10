@@ -11,8 +11,13 @@
 
         img {
             width: 100%;
-            height: auto;
             padding: 0 0.5%;
+            height: 200px;
+            object-fit: contain;
+
+            @include md {
+                height: 400px;
+            }
         }
     }
 
@@ -22,6 +27,12 @@
             width: 25%;
             padding: 0 0.5%;
             height: auto;
+            height: 75px;
+            object-fit: contain;
+
+            @include md {
+                height: 100px;
+            }
         }
     }
 
@@ -148,7 +159,6 @@
                 order: 7;
                 font-size: 16px;
             }
-
         }
 
         .color {
@@ -167,7 +177,6 @@
                 &:hover {
                     opacity: 50%;
                 }
-
             }
 
             span:nth-child(2) {
@@ -178,7 +187,6 @@
                 &:hover {
                     opacity: 50%;
                 }
-
             }
 
             span:nth-child(3) {
@@ -213,6 +221,7 @@
 
             .minus {
                 margin-right: 5px;
+
                 &:hover {
                     background-color: lightgray;
                 }

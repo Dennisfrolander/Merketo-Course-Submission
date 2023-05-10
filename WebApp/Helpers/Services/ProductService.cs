@@ -32,9 +32,6 @@ public class ProductService
 
 			var productEntities = await _productRepository.GetAllAsync();
 
-			
-			
-
 			foreach ( var productEntity in productEntities.OrderByDescending(x => x.Id))
 			{
 				products.Add( productEntity );
