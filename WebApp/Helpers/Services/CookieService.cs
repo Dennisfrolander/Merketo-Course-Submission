@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using WebApp.Helpers.Repositories.DataRepos;
 using WebApp.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Helpers.Services;
 
@@ -15,21 +16,21 @@ public class CookieService
 		_httpContextAccessor = httpContextAccessor;
 	}
 
-	public List<ProductCardViewModel> GetOrCreateProductCookies()
-	{
-		var productCardCookies = _httpContextAccessor.HttpContext!.Request.Cookies["Product-cookies-merketo"];
-		List<ProductCardViewModel> productViewModels = new();
+	//public List<ProductCardViewModel> GetOrCreateProductCookies()
+	//{
+	//	var productCardCookies = _httpContextAccessor.HttpContext!.Request.Cookies["Product-cookies-merketo"];
+	//	List<ProductCardViewModel> productViewModels = new();
 
-		if(productCardCookies != null)
-		{
-			foreach (var product in JsonSerializer.Deserialize<List<ProductCardViewModel>>(productCardCookies!)!)
-			{
-				productViewModels.Add(product);
-			}
-			return productViewModels;
-		}
-		else { return productViewModels; }
-	}
+	//	if(productCardCookies != null)
+	//	{
+	//		foreach (var product in JsonSerializer.Deserialize<List<ProductCardViewModel>>(productCardCookies!)!)
+	//		{
+	//			productViewModels.Add(product);
+	//		}
+	//		return productViewModels;
+	//	}
+	//	else { return productViewModels; }
+	//}
 
 
 	public void SetCookie(ProductCardViewModel model)
@@ -57,7 +58,8 @@ public class CookieService
 		var options = new CookieOptions
 		{
 			Expires = DateTime.Now.AddDays(1),
-			Path = "/"
+			Path = "/",
+			Secure = true,
 		};
 
 		var json = JsonSerializer.Serialize(products);
@@ -76,22 +78,20 @@ public class CookieService
 
 	public List<ProductCardViewModel> GetProduct()
 	{
-		var hej = _httpContextAccessor.HttpContext!.Request.Cookies["Product-cookies-merketo"];
+		var cookies = _httpContextAccessor.HttpContext!.Request.Cookies["Product-cookies-merketo"];
 
-		if(hej != null)
+		if(cookies != null)
 		{
 			List<ProductCardViewModel> products = new();
-			foreach (var product in JsonSerializer.Deserialize<List<ProductCardViewModel>>(hej!)!)
+			foreach (var product in JsonSerializer.Deserialize<List<ProductCardViewModel>>(cookies)!)
 			{
 				products.Add(product);
 			}
-			return products.OrderByDescending(p => products.IndexOf(p)).ToList();
+			return products.OrderByDescending(x => products.IndexOf(x)).ToList();
 		}
 		else
 		{
 			return null!;
 		}
-
-
 	}
 }

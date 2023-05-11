@@ -12,7 +12,7 @@ public class RelatedGridService
         _productRepository = productRepository;
     }
 
-    public async Task<RelatedGridViewModel> GetByCategoriesAsync(string productName, string title, int numberOfCards)
+    public async Task<GridViewModel> GetByCategoriesAsync(string productName, string title, int numberOfCards)
     {
         try
         {
@@ -43,10 +43,11 @@ public class RelatedGridService
             }
 
 
-            RelatedGridViewModel relatedGridViewModel = new()
+            GridViewModel relatedGridViewModel = new()
             {
                 Title = title,
                 Cards = productsWithRestrictedNumberOfCards,
+                ErrorMessage = "No related products at the moment",
             };
 
             return relatedGridViewModel;

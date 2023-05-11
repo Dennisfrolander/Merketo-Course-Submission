@@ -35,7 +35,7 @@ builder.Services.AddScoped<GridDiscountService>();
 builder.Services.AddScoped<CarouselService>();
 builder.Services.AddScoped<DetailsPageService>();
 builder.Services.AddScoped<RelatedGridService>();
-builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddScoped<CookieService>();
 
 
@@ -50,7 +50,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(x =>
 .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
 
 
-
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Identity")));
 builder.Services.AddDbContext<DataContext>(x =>
 x.UseSqlServer(builder.Configuration.GetConnectionString("Data")));

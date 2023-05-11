@@ -3,17 +3,9 @@
 @{
 	ViewData["Title"] = "Product Details";
 
-	var products = cookieService.GetProduct();
 }
 
 
 <partial name="/Views/Partials/Cards/_ProductCardDetailsPartial.cshtml" model="Model.ProductDetailsCard"/>
-<partial name="/Views/Partials/Grids/_RelatedGridPartial.cshtml" model="Model.RelatedGrid"/>
-
-
-@if(products != null){
-	@foreach (var product in products)
-	{
-		<p>@product.Name</p>
-	}
-}
+<partial name="/Views/Partials/Grids/_GridPartial.cshtml" model="Model.RelatedGrid" />
+<partial name="/Views/Partials/Grids/_GridPartial.cshtml" model="Model.RecentlyViewed" />

@@ -4,5 +4,7 @@ public class DetailsPageViewModel
 {
     public ProductDetailsCardViewModel ProductDetailsCard { get; set; } = new ProductDetailsCardViewModel();
 
-    public RelatedGridViewModel RelatedGrid { get; set; } = new RelatedGridViewModel();
+    public GridViewModel RelatedGrid { get; set; } = new GridViewModel();
+
+    public GridViewModel RecentlyViewed { get; set; } = new GridViewModel();
 }
