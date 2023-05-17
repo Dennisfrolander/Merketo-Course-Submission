@@ -18,6 +18,8 @@ builder.Services.AddScoped<ProfileAdressIdentityRepository>();
 builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<ProfileAdressRepository>();
+builder.Services.AddScoped<TagRepository>();
+builder.Services.AddScoped<ProductTagRepository>();
 
 
 // Services
@@ -35,6 +37,7 @@ builder.Services.AddScoped<GridDiscountService>();
 builder.Services.AddScoped<CarouselService>();
 builder.Services.AddScoped<DetailsPageService>();
 builder.Services.AddScoped<RelatedGridService>();
+builder.Services.AddScoped<TagService>();
 
 builder.Services.AddScoped<CookieService>();
 

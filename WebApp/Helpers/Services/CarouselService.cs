@@ -5,14 +5,14 @@ namespace WebApp.Helpers.Services;
 
 public class CarouselService
 {
-    private readonly ProductRepository _productRepository;
+    private readonly ProductService _productService;
 
-    public CarouselService(ProductRepository productRepository)
-    {
-        _productRepository = productRepository;
-    }
+	public CarouselService(ProductService productService)
+	{
+		_productService = productService;
+	}
 
-    public async Task<CarouselWithProductCardsViewModel> GetPopular(string title)
+	public async Task<CarouselWithProductCardsViewModel> GetPopular(string title)
     {
         try
         {
@@ -23,7 +23,7 @@ public class CarouselService
 
             List<ProductCardViewModel> popularProduct = new();
 
-            foreach(var product in await _productRepository.GetAllAsync(x => x.IsPopular == true))
+            foreach(var product in await _productService.GetAllWithTagsAsync("Popular"))
             {
                 popularProduct.Add(product);
             }
@@ -50,11 +50,7 @@ public class CarouselService
             else
             {
                 return null!;
-            }
-
-           
-
-            
+            } 
         }
         catch { return null!; }
     }

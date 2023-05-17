@@ -8,7 +8,7 @@
     <div class="title">
         <h2>@Model.Title</h2>
     </div>
-    <div class="container-fluid d.flex justify-content-center px-5">
+    <div class="container-fluid d-flex justify-content-center">
         <div class="carousel-inner">
             @for (int i = 0; i < Model.ProductCards.Count(); i += 6)
             {
@@ -30,3 +30,4 @@
 </section>
 }
 
+<script>carousel()</script>

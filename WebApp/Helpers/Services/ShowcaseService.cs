@@ -5,11 +5,11 @@ namespace WebApp.Helpers.Services;
 
 public class ShowcaseService
 {
-	private readonly ProductRepository _productRepository;
+	private readonly ProductService _productService;
 
-	public ShowcaseService(ProductRepository productRepository)
+	public ShowcaseService(ProductService productService)
 	{
-		_productRepository = productRepository;
+		_productService = productService;
 	}
 
 	public async Task<ShowcaseViewModel> GetRandomFeaturedAsync(string ingress)
@@ -19,7 +19,7 @@ public class ShowcaseService
 			List<ShowcaseViewModel> listOfshowCaseViewModel = new();
 
 
-			foreach (var product in await _productRepository.GetAllAsync(x => x.IsFeatured == true))
+			foreach (var product in await _productService.GetAllWithTagsAsync("Featured"))
 			{
 				listOfshowCaseViewModel.Add(product);
 			}

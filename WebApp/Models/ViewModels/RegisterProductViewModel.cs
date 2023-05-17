@@ -4,7 +4,7 @@ using WebApp.Models.Interfaces;
 
 namespace WebApp.Models.ViewModels;
 
-public class RegisterProductViewModel : IProduct, ITag
+public class RegisterProductViewModel : IProduct
 {
 	[Required(ErrorMessage = "You need to provide a product name")]
 	[Display(Name = "Product Name*")]
@@ -25,15 +25,6 @@ public class RegisterProductViewModel : IProduct, ITag
 	[Display(Name = "Discount in whole numbers, 10 = 10% (optional)")]
 	public int? Discount { get; set; }
 
-	[Display(Name = "New")]
-	public bool IsNew { get; set; }
-
-	[Display(Name = "Featured")]
-	public bool IsFeatured { get; set; }
-
-	[Display(Name = "Popular")]
-	public bool IsPopular { get; set; }
-
 	[Required(ErrorMessage = "You need to provide a category")]
 	[Display(Name = "Category*")]
 	public int CategoryId { get; set; }
@@ -47,9 +38,6 @@ public class RegisterProductViewModel : IProduct, ITag
 			ImageUrl = model.ImageUrl,
 			Price = model.Price,
 			Discount = model.Discount,
-			IsNew = model.IsNew,
-			IsFeatured = model.IsFeatured,
-			IsPopular = model.IsPopular,
 			CategoryId = model.CategoryId,
 		};
 	}
