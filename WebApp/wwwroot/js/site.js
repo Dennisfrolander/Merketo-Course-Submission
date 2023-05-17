@@ -276,3 +276,43 @@ const descriptionChecker = (maxCharacters) => {
 
 
 
+const carousel = () => {
+    try {
+        var slides = document.querySelectorAll('.slide');
+        var prevBtn = document.querySelector('.prevBtn');
+        var nextBtn = document.querySelector('.nextBtn');
+        var currentSlide = 0;
+
+        function showSlide(direction) {
+            if (direction === 'next') {
+                currentSlide = (currentSlide + 1) % slides.length;
+            } else if (direction === 'prev') {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            }
+
+            var slideWidth = slides[currentSlide].offsetWidth;
+            var offset = -currentSlide * slideWidth;
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.transform = 'translateX(' + offset + 'px)';
+            }
+        }
+
+        prevBtn.addEventListener('click', function () {
+            showSlide('prev');
+        });
+
+        nextBtn.addEventListener('click', function () {
+            showSlide('next');
+        });
+
+        startAutoslide(showSlide, 'next', 10);
+    }
+    catch { }
+
+};
+
+const startAutoslide = (_function, _direction, _seconds) => {
+    setInterval(function () {
+        _function(_direction);
+    }, _seconds * 1000);
+};

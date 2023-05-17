@@ -34,26 +34,22 @@
 						<input asp-for="ImageUrl" class="input-form" />
 						<small><span asp-validation-for="ImageUrl" class="text-danger"></span></small>
 					</div>
-					<div class="col-12 mt-3">
-						<div class="form-check ">
-							<input class="form-check-input" class="checkbox" type="checkbox" asp-for="IsNew">
-							<label class="form-check-label" asp-for="IsNew"></label>
-						</div>
-					</div>
-					<div class="col-12 my-2">
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" asp-for="IsFeatured">
-							<label class="form-check-label" asp-for="IsFeatured"></label>
-						</div>
-					</div>
-					<div class="col-12 mb-3">
-						<div class="form-check">
-							<input class="form-check-input" class="checkbox" type="checkbox" asp-for="IsPopular">
-							<label class="form-check-label" asp-for="IsPopular"></label>
-						</div>
-					</div>
 
-					<div class="col-12">
+					@if(ViewBag.Tags != null)
+					{
+						@foreach (var tag in ViewBag.Tags)
+						{
+							<div class="col-12 mt-3">
+								<div class="form-check ">
+									<input id="@tag.Text-@tag.Value" class="form-check-input checkbox" name="Tags" type="checkbox" value="@tag.Value" checked="@tag.Selected">
+									<label class="form-check-label" for="@tag.Text-@tag.Value">@tag.Text</label>
+								</div>
+							</div>
+						}
+					}
+
+
+					<div class="col-12 my-3">
 						<label asp-for="CategoryId" class="mb-2"></label>
 						<select asp-for="CategoryId" class="form-select" aria-label="Default select example">
 							@if (await categoryService.GetAllAsync() != null)

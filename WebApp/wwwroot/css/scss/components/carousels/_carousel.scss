@@ -22,8 +22,13 @@
 
     .img {
        height: 100px;
+       padding: 0px;
        @include md {
            height: 250px;
+       }
+
+       @include lg {
+           padding: 30px !important;
        }
     }
 

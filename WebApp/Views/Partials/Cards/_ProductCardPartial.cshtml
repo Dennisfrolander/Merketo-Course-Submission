@@ -4,7 +4,7 @@
 <div class="product-card ">
 	<a asp-controller="product" asp-action="details" asp-route-name="@Model.Name">
 
-		@if (Model.New == true)
+		@if (Model.Tags != null && Model.Tags.Contains("New")) 
 		{
 			<div class="card-img-new">
 				<img src="@Model.ImageUrl"

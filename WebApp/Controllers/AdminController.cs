@@ -13,22 +13,25 @@ public class AdminController : Controller
 	private readonly UserService _userService;
     private readonly AdminService _adminService;
     private readonly ProductService _productService;
+    private readonly TagService _tagService;
 	#endregion
 
 	#region Constructor
-	public AdminController(UserService userService, AdminService adminService, ProductService productService)
+	public AdminController(UserService userService, AdminService adminService, ProductService productService, TagService tagService)
 	{
 		_userService = userService;
 		_adminService = adminService;
 		_productService = productService;
+		_tagService = tagService;
 	}
 	#endregion
 
-
-	public IActionResult Index()
+    public IActionResult CreateBlogPost()
     {
         return View();
     }
+
+
 	#region Users - All, Create, Edit
 	public async Task<IActionResult> AllUsers()
     {
@@ -105,26 +108,32 @@ public class AdminController : Controller
     }
 
     [HttpGet]
-    public IActionResult CreateProduct()
+    public async Task<IActionResult> CreateProduct()
     {
+        ViewBag.Tags = await _tagService.GetTagsAsync();
         return View();
     }
 
     [HttpPost]
-	public async Task<IActionResult> CreateProduct(RegisterProductViewModel model)
+	public async Task<IActionResult> CreateProduct(RegisterProductViewModel model, string[] tags)
 	{
         if (ModelState.IsValid)
         {
             if (await _productService.CreateAsync(model))
-                return RedirectToAction("AllProducts");
-            else
-				ModelState.AddModelError("", "Something wrong happened, try again.");
+            {
+                await _tagService.AddProductTagsAsync(model, tags);
+				return RedirectToAction("AllProducts");
+			}
+                
+			ModelState.AddModelError("", "Product with the same name already exist.");
 		}
-        else
-        {
-			ModelState.AddModelError("", "You have to put valid information in the required fields");
-		}
+        
+
+		ModelState.AddModelError("", "You have to put valid information in the required fields");
+		ViewBag.Tags = await _tagService.GetTagsAsync(tags);
 		return View();
+		
+
 	}
 
 	[HttpGet]

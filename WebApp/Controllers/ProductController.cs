@@ -19,7 +19,7 @@ public class ProductController : Controller
 
 	public async Task<IActionResult> Index()
 	{
-		var products = await _productService.GetAllAsync();
+		var products = await _productService.GetAllWithTagsAsync();
 		return View(products);
 	}
 
