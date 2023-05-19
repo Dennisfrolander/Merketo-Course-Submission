@@ -16,8 +16,7 @@ public class UserProfileEntity : IUserProfile
 	public string? PhoneNumber { get; set; }
 	public string? ProfileImage { get; set; }
 	public string? CompanyName { get; set; }
-	public IdentityUser User { get; set; } = null!;
-
+	public IdentityUser User { get; set; } = null!; 
 	public ICollection<UserProfileAdressEntity> Adresses { get; set; } = new HashSet<UserProfileAdressEntity>();
 
 	public static implicit operator UserProfileViewModel(UserProfileEntity entity)

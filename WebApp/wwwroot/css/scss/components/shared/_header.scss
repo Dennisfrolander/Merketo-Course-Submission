@@ -52,7 +52,7 @@ header {
         grid-area: menulinks;
         background-color: $color-dark-2;
         position: fixed;
-        z-index: 1;
+        z-index: 2;
         top: 0;
         right: 0;
         bottom: 0;
@@ -160,7 +160,7 @@ header {
         position: relative;
         display: block;
         text-align: right;
-        z-index: 1;
+        z-index: 3;
 
         @include lg {
             display: none;
