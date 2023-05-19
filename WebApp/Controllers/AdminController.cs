@@ -26,12 +26,6 @@ public class AdminController : Controller
 	}
 	#endregion
 
-    public IActionResult CreateBlogPost()
-    {
-        return View();
-    }
-
-
 	#region Users - All, Create, Edit
 	public async Task<IActionResult> AllUsers()
     {

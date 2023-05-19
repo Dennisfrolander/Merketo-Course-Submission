@@ -32,6 +32,7 @@ const createAccountValidate = () => {
         for (let input of inputs) {
             input.addEventListener("keyup", function (e) {
                 switch (e.target.id) {
+
                     case 'FirstName':
                         regexValidator(e.target, regExFirstAndLastName, "First Name is invalid", "");
                         break;
@@ -122,6 +123,18 @@ const createProductValidate = () => {
                 }
             })
         }
+
+        const discount = document.getElementById("Discount");
+        const discountError = document.getElementById('discount-error');
+
+        discount.addEventListener("keyup", function () {
+            console.log("hej");
+            if (discount.value > 100 || discount.value < 0) {
+                discountError.innerHTML = "It can only be between 0-100";
+            } else {
+                discountError.innerHTML = "";
+            }
+        });
     }
     catch { }
 }
