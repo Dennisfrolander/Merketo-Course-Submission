@@ -16,22 +16,7 @@ public class CookieService
 		_httpContextAccessor = httpContextAccessor;
 	}
 
-	//public List<ProductCardViewModel> GetOrCreateProductCookies()
-	//{
-	//	var productCardCookies = _httpContextAccessor.HttpContext!.Request.Cookies["Product-cookies-merketo"];
-	//	List<ProductCardViewModel> productViewModels = new();
-
-	//	if(productCardCookies != null)
-	//	{
-	//		foreach (var product in JsonSerializer.Deserialize<List<ProductCardViewModel>>(productCardCookies!)!)
-	//		{
-	//			productViewModels.Add(product);
-	//		}
-	//		return productViewModels;
-	//	}
-	//	else { return productViewModels; }
-	//}
-
+	//Om du ser denna cookieservicen så hade jag uppskattat konstruktiv kritik om jag gör på ett bra sätt eller ett dåligt sätt.
 
 	public void SetCookie(ProductCardViewModel model)
 	{
