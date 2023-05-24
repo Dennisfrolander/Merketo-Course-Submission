@@ -126,10 +126,10 @@ const createProductValidate = () => {
 
         const discount = document.getElementById("Discount");
         const discountError = document.getElementById('discount-error');
+        const regEx = /^(?:100|\d{1,2})$/;
 
         discount.addEventListener("keyup", function () {
-            console.log("hej");
-            if (discount.value > 100 || discount.value < 0) {
+            if (!regEx.test(discount.value) || /\+|-/.test(discount.value)) {
                 discountError.innerHTML = "It can only be between 0-100";
             } else {
                 discountError.innerHTML = "";

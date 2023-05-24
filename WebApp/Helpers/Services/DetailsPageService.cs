@@ -25,7 +25,7 @@ public class DetailsPageService
 			{
 				Title = "Recently Viewed",
 				Cards = _cookieService.GetProduct(),
-				ErrorMessage = "No recenlty viewed at the moment",
+				ErrorMessage = "No recently viewed at the moment",
 			}
 		};
 
