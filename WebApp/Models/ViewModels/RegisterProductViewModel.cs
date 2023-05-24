@@ -23,6 +23,7 @@ public class RegisterProductViewModel : IProduct
 	public decimal Price { get; set; }
 
 	[Display(Name = "Discount in whole numbers, 10 = 10% (optional)")]
+	[RegularExpression(@"^(?:100|\d{1,2})$", ErrorMessage = "Only numbers between 0-100 is allowed")]
 	public int? Discount { get; set; }
 
 	[Required(ErrorMessage = "You need to provide a category")]
